@@ -1,0 +1,30 @@
+{
+{
+  "type": "html",
+  "name": "consentimiento",
+  "html": {
+    "es": "<p align=\"justify\"> Has sido invitado a participar en este estudio, que tiene como objetivo recolectar datos para analizar relaciones entre emociones y uso del lenguaje. <br>\nTu participar es totalmente voluntaria.  Tienes el derecho de no participar o de suspender tu participación en cualquier momento.<br>\nNo existen riesgos directos asociados con la participación en este estudio. <br>\nTampoco existe una compensación financiera asociada con la participación en el estudio.<br>\nLa información que nos brindes será tratada de manera confidencial y anónima. <br>\nEn el cuestionario se te pedirá que escribas tu nombre de usuario de Twitter, el cual nos puede ayudar a mejorar la calidad de nuestros datos para su análisis. Introducir tu nombre de usuario es enteramente voluntario.<br>\nEn ningún caso tus respuestas serán asociadas con tu usuario de Twitter. De este modo, los datos permanecerán completamente anónimos.\n<br>\n<br>\nAlgunos aspectos que necesitas saber sobre las preguntas del estudio son:<br>\n- Está dividido en tres secciones. Cada una de ellas muestra una instrucción a seguir.<br>\n- El tiempo aproximado para completar el cuestionario es de 25 minutos.\n<br>\nTu participación en este estudio en línea dependerá de seleccionar la casilla de \"Acepto\" a continuación. \n</p>"
+  }
+},
+{
+"type": "boolean",
+"name": "p_q1",
+"defaultValue": "false",
+"correctAnswer": true,
+"isRequired": true,
+"validators": [
+{
+"type": "expression",
+"text": "No has aceptado el consentimiento, es necesario para participar en el estudio.",
+"expression": "{p_q1} = true"
+}
+],
+"label": {
+"es": "Acepto"
+}
+}
+],
+"title": {
+"es": "Consentimiento  informado"
+}
+}

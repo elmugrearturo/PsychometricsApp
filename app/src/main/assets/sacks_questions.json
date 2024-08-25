@@ -1,0 +1,367 @@
+{
+	"instructions" : {
+		"es" : "A continuación hay sesenta frases incompletas. Lea cada una y complétala con lo primero que venga a tu mente. Trabaja tan aprisa como le sea posible. En caso de que no puedas completar una rápidamente, déjala para al final. Todas deben ser contestadas.\n"
+	},
+	"questions" : [
+		{
+			"id": "1",
+			"text": {
+				"es": "Siento que mi padre raras veces..."
+			}
+		},
+		{
+			"id": "2",
+			"text": {
+				"es": "Cuando tengo mala suerte..."
+			}
+		},
+		{
+			"id": "3",
+			"text": {
+				"es": "Siempre anhelé..."
+			}
+		},
+		{
+			"id": "4",
+			"text": {
+				"es": "Si yo estuviera  a cargo..."
+			}
+		},
+		{
+			"id": "5",
+			"text": {
+				"es": "El futuro me parece..."
+			}
+		},
+		{
+			"id": "6",
+			"text": {
+				"es": "Las personas que están sobre mí..."
+			}
+		},
+		{
+			"id": "7",
+			"text": {
+				"es": "Sé que es tonto pero tengo miedo de..."
+			}
+		},
+		{
+			"id": "8",
+			"text": {
+				"es": "Creo que es un verdadero amigo..."
+			}
+		},
+		{
+			"id": "9",
+			"text": {
+				"es": "Cuando era niño (a)..."
+			}
+		},
+		{
+			"id": "10",
+			"text": {
+				"es": "Mi idea de mujer (hombre) perfecta (o)..."
+			}
+		},
+		{
+			"id": "11",
+			"text": {
+				"es": "Cuando veo una hombre y a una mujer juntos..."
+			}
+		},
+		{
+			"id": "12",
+			"text": {
+				"es": "Comparada con las demás familias, la mía..."
+			}
+		},
+		{
+			"id": "13",
+			"text": {
+				"es": "En las labores me llevo mejor con..."
+			}
+		},
+		{
+			"id": "14",
+			"text": {
+				"es": "Mi madre..."
+			}
+		},
+		{
+			"id": "15",
+			"text": {
+				"es": "Haría cualquier cosa por olvidar la vez que..."
+			}
+		},
+		{
+			"id": "16",
+			"text": {
+				"es": "Si mi padre tan sólo..."
+			}
+		},
+		{
+			"id": "17",
+			"text": {
+				"es": "Siento que tengo la habilidad para..."
+			}
+		},
+		{
+			"id": "18",
+			"text": {
+				"es": "Sería perfectamente feliz si..."
+			}
+		},
+		{
+			"id": "19",
+			"text": {
+				"es": "Si la gente trabaja para mí..."
+			}
+		},
+		{
+			"id": "20",
+			"text": {
+				"es": "Yo espero..."
+			}
+		},
+		{
+			"id": "21",
+			"text": {
+				"es": " En la escuela, mis maestros..."
+			}
+		},
+		{
+			"id": "22",
+			"text": {
+				"es": "La mayoría de mis amistades no saben que tengo miedo de..."
+			}
+		},
+		{
+			"id": "23",
+			"text": {
+				"es": "No me gusta la gente con..."
+			}
+		},
+		{
+			"id": "24",
+			"text": {
+				"es": "Antes..."
+			}
+		},
+		{
+			"id": "25",
+			"text": {
+				"es": " Pienso que la mayoría de las muchachas (os)..."
+			}
+		},
+		{
+			"id": "26",
+			"text": {
+				"es": " Yo creo que la vida matrimonial..."
+			}
+		},
+		{
+			"id": "27",
+			"text": {
+				"es": "Mi familia me trata como..."
+			}
+		},
+		{
+			"id": "28",
+			"text": {
+				"es": "Aquellos con los que trabajo..."
+			}
+		},
+		{
+			"id": "29",
+			"text": {
+				"es": "Mi madre y yo..."
+			}
+		},
+		{
+			"id": "30",
+			"text": {
+				"es": "Mi más grande error fue..."
+			}
+		},
+		{
+			"id": "31",
+			"text": {
+				"es": "Desearía que mi padre..."
+			}
+		},
+		{
+			"id": "32",
+			"text": {
+				"es": "Mi mayor debilidad es..."
+			}
+		},
+		{
+			"id": "33",
+			"text": {
+				"es": "Mi ambición secreta en la vida..."
+			}
+		},
+		{
+			"id": "34",
+			"text": {
+				"es": "La gente que trabaja para mí..."
+			}
+		},
+		{
+			"id": "35",
+			"text": {
+				"es": "Algún día yo..."
+			}
+		},
+		{
+			"id": "36",
+			"text": {
+				"es": "Cuando veo el jefe venir..."
+			}
+		},
+		{
+			"id": "37",
+			"text": {
+				"es": "Quisiera perder el miedo de..."
+			}
+		},
+		{
+			"id": "38",
+			"text": {
+				"es": "La gente que más me agrada..."
+			}
+		},
+		{
+			"id": "39",
+			"text": {
+				"es": "Si fuera joven otra vez..."
+			}
+		},
+		{
+			"id": "40",
+			"text": {
+				"es": "Creo que la mayoría de las mujeres (hombres)..."
+			}
+		},
+		{
+			"id": "41",
+			"text": {
+				"es": "Si tuviera relaciones sexuales..."
+			}
+		},
+		{
+			"id": "42",
+			"text": {
+				"es": "La mayoría de las familias que conozco..."
+			}
+		},
+		{
+			"id": "43",
+			"text": {
+				"es": "Me gusta trabajar con la gente que..."
+			}
+		},
+		{
+			"id": "44",
+			"text": {
+				"es": "Creo que la mayoría de las madres..."
+			}
+		},
+		{
+			"id": "45",
+			"text": {
+				"es": "Cuando era más joven me sentía culpable de..."
+			}
+		},
+		{
+			"id": "46",
+			"text": {
+				"es": "Siento que mi padre es..."
+			}
+		},
+		{
+			"id": "47",
+			"text": {
+				"es": "Cuando la suerte se vuelve en contra mía..."
+			}
+		},
+		{
+			"id": "48",
+			"text": {
+				"es": "Cuando doy órdenes, yo..."
+			}
+		},
+		{
+			"id": "49",
+			"text": {
+				"es": "Lo que más deseo en la vida..."
+			}
+		},
+		{
+			"id": "50",
+			"text": {
+				"es": "Dentro de algún tiempo..."
+			}
+		},
+		{
+			"id": "51",
+			"text": {
+				"es": "La gente a quien yo considero mis superiores..."
+			}
+		},
+		{
+			"id": "52",
+			"text": {
+				"es": "Mis temores en ocasiones me obligan a..."
+			}
+		},
+		{
+			"id": "53",
+			"text": {
+				"es": "Cuando no estoy, mis amigos..."
+			}
+		},
+		{
+			"id": "54",
+			"text": {
+				"es": "Mi más vivido recuerdo de la infancia..."
+			}
+		},
+		{
+			"id": "55",
+			"text": {
+				"es": "Lo que menos me gusta de las mujeres (hombres)..."
+			}
+		},
+		{
+			"id": "56",
+			"text": {
+				"es": "Mi vida sexual..."
+			}
+		},
+		{
+			"id": "57",
+			"text": {
+				"es": "Cuando era niño (a), mi familia..."
+			}
+		},
+		{
+			"id": "58",
+			"text": {
+				"es": "La gente que trabaja conmigo, generalmente..."
+			}
+		},
+		{
+			"id": "59",
+			"text": {
+				"es": "Me agrada mi madre pero..."
+			}
+		},
+		{
+			"id": "60",
+			"text": {
+				"es": "La peor cosa que he hecho..."
+			}
+		}
+	]
+}

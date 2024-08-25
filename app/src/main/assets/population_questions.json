@@ -1,0 +1,54 @@
+{
+  "name": "p0",
+  "elements": [
+    {
+      "type": "radiogroup",
+      "name": "p0_q1",
+      "title": {
+        "es": "Sexo"
+      },
+      "isRequired": true,
+      "choices": [
+        {
+          "value": "item1",
+          "text": {
+            "es": "Masculino"
+          }
+        },
+        {
+          "value": "item2",
+          "text": {
+            "es": "Femenino"
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "p0_q2",
+      "title": {
+        "es": "Edad"
+      },
+      "isRequired": true,
+      "validators": [
+        {
+          "type": "numeric",
+          "text": "Por favor ponga una edad válida.",
+          "minValue": 12,
+          "maxValue": 99
+        }
+      ],
+      "inputType": "number"
+    },
+    {
+      "type": "text",
+      "name": "p0_q3",
+      "title": {
+        "es": "Usuario de Twitter"
+      }
+    }
+  ],
+  "title": {
+    "es": "Información Básica"
+  }
+}

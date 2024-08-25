@@ -1,0 +1,347 @@
+{
+	"instructions" : {
+		"es" : "Las siguientes expresiones le describen a usted con más o menos precisión. Por favor escoja un número para cada una de las siguientes expresiones, indicando así hasta qué punto está de acuerdo o en desacuerdo en cómo le describe a usted.\nMe veo a mí mismo(a) como alguien que..."
+	},
+	"answers": [
+		{
+			"id" : "1",
+			"text" : {
+				"es": "Muy en desacuerdo"
+			}
+		},
+		{
+			"id": "2",
+			"text": {
+				"es": "Ligeramente en desacuerdo"
+			}
+		},
+		{
+			"id": "3",
+			"text": {
+				"es": "Ni de acuerdo ni en desacuerdo"
+			}
+		},
+		{
+			"id": "4",
+			"text": {
+				"es": "Ligeramente de acuerdo"
+			}
+		},
+		{
+			"id": "5",
+			"text": {
+				"es": "Muy de acuerdo"
+			}
+		}
+	],
+	"questions" : [
+		{
+			"id": "bf_1",
+			"text": {
+				"es": "Es bien hablador"
+			},
+			"trait" : "Extraversion"
+		},
+		{
+			"id": "bf_2",
+			"text": {
+				"es": "Tiende a ser criticón"
+			},
+			"trait" : "Agreeableness"
+		},
+		{
+			"id": "bf_3",
+			"text": {
+				"es": "Es minucioso en el trabajo"
+			},
+			"trait" : "Conscientiousness"
+		},
+		{
+			"id": "bf_4",
+			"text": {
+				"es": "Es depresivo, melancólico"
+			},
+			"trait" : "Neuroticism"
+		},
+		{
+			"id": "bf_5",
+			"text": {
+				"es": "Es original, se le ocurren ideas nuevas"
+			},
+			"trait" : "Openness"
+		},
+		{
+			"id": "bf_6",
+			"text": {
+				"es": "Es reservado"
+			},
+			"trait" : "Extraversion"
+		},
+		{
+			"id": "bf_7",
+			"text": {
+				"es": "Es generoso y ayuda a los demás"
+			},
+			"trait" : "Agreeableness"
+		},
+		{
+			"id": "bf_8",
+			"text": {
+				"es": "Puede a veces ser algo descuidado"
+			},
+			"trait" : "Conscientiousness"
+		},
+		{
+			"id": "bf_9",
+			"text": {
+				"es": "Es calmado, controla bien el estrés"
+			},
+			"trait" : "Neuroticism"
+		},
+		{
+			"id": "bf_10",
+			"text": {
+				"es": "Tiene intereses muy diversos"
+			},
+			"trait" : "Openness"
+		},
+		{
+			"id": "bf_11",
+			"text": {
+				"es": "Está lleno de energía"
+			},
+			"trait" : "Extraversion"
+		},
+		{
+			"id": "bf_12",
+			"text": {
+				"es": "Prefiere trabajos que son rutinarios"
+			},
+			"trait" : "Openness"
+		},
+		{
+			"id": "bf_13",
+			"text": {
+				"es": "Inicia disputas con los demás"
+			},
+			"trait" : "Agreeableness"
+		},
+		{
+			"id": "bf_14",
+			"text": {
+				"es": "Es trabajador, cumplidor, digno de confianza"
+			},
+			"trait" : "Conscientiousness"
+		},
+		{
+			"id": "bf_15",
+			"text": {
+				"es": "Con frecuencia se pone tenso"
+			},
+			"trait" : "Neuroticism"
+		},
+		{
+			"id": "bf_16",
+			"text": {
+				"es": "Tiende a ser callado"
+			},
+			"trait" : "Extraversion"
+		},
+		{
+			"id": "bf_17",
+			"text": {
+				"es": "Valora lo artístico, lo estético"
+			},
+			"trait" : "Openness"
+		},
+		{
+			"id": "bf_18",
+			"text": {
+				"es": "Tiende a ser desorganizado"
+			},
+			"trait" : "Conscientiousness"
+		},
+		{
+			"id": "bf_19",
+			"text": {
+				"es": "Es emocionalmente estable, difícil de alterar"
+			},
+			"trait" : "Neuroticism"
+		},
+		{
+			"id": "bf_20",
+			"text": {
+				"es": "Tiene una imaginación activa"
+			},
+			"trait" : "Openness"
+		},
+		{
+			"id": "bf_21",
+			"text": {
+				"es": "Persevera hasta terminar el trabajo"
+			},
+			"trait" : "Conscientiousness"
+		},
+		{
+			"id": "bf_22",
+			"text": {
+				"es": "Es a veces maleducado con los demás"
+			},
+			"trait" : "Agreeableness"
+		},
+		{
+			"id": "bf_23",
+			"text": {
+				"es": "Es inventivo"
+			},
+			"trait" : "Openness"
+		},
+		{
+			"id": "bf_24",
+			"text": {
+				"es": "Es generalmente confiado"
+			},
+			"trait" : "Agreeableness"
+		},
+		{
+			"id": "bf_25",
+			"text": {
+				"es": "Tiende a ser flojo, vago"
+			},
+			"trait" : "Conscientiousness"
+		},
+		{
+			"id": "bf_26",
+			"text": {
+				"es": "Se preocupa mucho por las cosas"
+			},
+			"trait" : "Neuroticism"
+		},
+		{
+			"id": "bf_27",
+			"text": {
+				"es": "Es a veces tímido, inhibido"
+			},
+			"trait" : "Extraversion"
+		},
+		{
+			"id": "bf_28",
+			"text": {
+				"es": "Es indulgente, no le cuesta perdonar"
+			},
+			"trait" : "Agreeableness"
+		},
+		{
+			"id": "bf_29",
+			"text": {
+				"es": "Hace las cosas de manera eficiente"
+			},
+			"trait" : "Conscientiousness"
+		},
+		{
+			"id": "bf_30",
+			"text": {
+				"es": "Es temperamental, de humor cambiante"
+			},
+			"trait" : "Neuroticism"
+		},
+		{
+			"id": "bf_31",
+			"text": {
+				"es": "Es ingenioso, analítico"
+			},
+			"trait" : "Openness"
+		},
+		{
+			"id": "bf_32",
+			"text": {
+				"es": "Irradia entusiasmo"
+			},
+			"trait" : "Extraversion"
+		},
+		{
+			"id": "bf_33",
+			"text": {
+				"es": "Es a veces frío y distante"
+			},
+			"trait" : "Agreeableness"
+		},
+		{
+			"id": "bf_34",
+			"text": {
+				"es": "Hace planes y los sigue cuidadosamente"
+			},
+			"trait" : "Conscientiousness"
+		},
+		{
+			"id": "bf_35",
+			"text": {
+				"es": "Mantiene la calma en situaciones difíciles"
+			},
+			"trait" : "Neuroticism"
+		},
+		{
+			"id": "bf_36",
+			"text": {
+				"es": "Le gusta reflexionar, jugar con las ideas"
+			},
+			"trait" : "Openness"
+		},
+		{
+			"id": "bf_37",
+			"text": {
+				"es": "Es considerado y amable con casi todo el mundo"
+			},
+			"trait" : "Agreeableness"
+		},
+		{
+			"id": "bf_38",
+			"text": {
+				"es": "Se pone nervioso con facilidad"
+			},
+			"trait" : "Neuroticism"
+		},
+		{
+			"id": "bf_39",
+			"text": {
+				"es": "Es educado en arte, música o literatura"
+			},
+			"trait" : "Openness"
+		},
+		{
+			"id": "bf_40",
+			"text": {
+				"es": "Es asertivo, no teme expresar lo que quiere"
+			},
+			"trait" : "Extraversion"
+		},
+		{
+			"id": "bf_41",
+			"text": {
+				"es": "Le gusta cooperar con los demás"
+			},
+			"trait" : "Agreeableness"
+		},
+		{
+			"id": "bf_42",
+			"text": {
+				"es": "Se distrae con facilidad"
+			},
+			"trait" : "Conscientiousness"
+		},
+		{
+			"id": "bf_43",
+			"text": {
+				"es": "Es extrovertido, sociable"
+			},
+			"trait" : "Extraversion"
+		},
+		{
+			"id": "bf_44",
+			"text": {
+				"es": "Tiene pocos intereses artísticos"
+			},
+			"trait" : "Openness"
+		}
+	]
+}

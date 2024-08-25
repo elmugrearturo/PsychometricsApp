@@ -1,0 +1,95 @@
+{
+  "name": "p7",
+  "elements": [
+    {
+      "type": "matrix",
+      "name": "p7_q1",
+      "title": {
+        "es": "Durante las últimas 2 semanas, ¿qué tan seguido has tenido molestias debido a los siguientes problemas?."
+      },
+      "isRequired": true,
+      "columns": [
+        {
+          "value": "0",
+          "text": {
+            "es": "Ningún día"
+          }
+        },
+        {
+          "value": "1",
+          "text": {
+            "es": "Varios días"
+          }
+        },
+        {
+          "value": "2",
+          "text": {
+            "es": "Más de la mitad de los días"
+          }
+        },
+        {
+          "value": "3",
+          "text": {
+            "es": "Casi todos los días"
+          }
+        }
+      ],
+      "rows": [
+        {
+          "value": "phq_1",
+          "text": {
+            "es": "Poco interés o placer en hacer cosas"
+          }
+        },
+        {
+          "value": "phq_2",
+          "text": {
+            "es": "Te has sentido decaído(a), deprimido(a) o sin esperanzas"
+          }
+        },
+        {
+          "value": "phq_3",
+          "text": {
+            "es": "Has tenido dificultad para quedarse o permanecer dormido(a), o ha dormido demasiado"
+          }
+        },
+        {
+          "value": "phq_4",
+          "text": {
+            "es": "Te has sentido cansado(a) o con poca energía"
+          }
+        },
+        {
+          "value": "phq_5",
+          "text": {
+            "es": "Sin apetito o has comido en exceso"
+          }
+        },
+        {
+          "value": "phq_6",
+          "text": {
+            "es": "Te has sentido mal con usted mismo(a) – o que es un fracaso o que ha quedado mal con usted mismo(a) o con tu familia"
+          }
+        },
+        {
+          "value": "phq_7",
+          "text": {
+            "es": "Has tenido dificultad para concentrarse en ciertas actividades, tales como leer el periódico o ver la televisión"
+          }
+        },
+        {
+          "value": "phq_8",
+          "text": {
+            "es": "¿Te has movido o hablado tan lento que otras personas podrían haberlo notado? o de lo contrario, muy inquieto(a) o agitado(a) que has estado moviéndote mucho más de lo normal"
+          }
+        },
+        {
+          "value": "phq_9",
+          "text": {
+            "es": "Pensamientos acerca de que estarías mejor muerto(a) o de lastimarte de alguna manera"
+          }
+        }
+      ]
+    }
+  ]
+}
