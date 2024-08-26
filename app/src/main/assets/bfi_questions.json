@@ -36,308 +36,308 @@
 	],
 	"questions" : [
 		{
-			"id": "bf_1",
+			"id": "1",
 			"text": {
 				"es": "Es bien hablador"
 			},
 			"trait" : "Extraversion"
 		},
 		{
-			"id": "bf_2",
+			"id": "2",
 			"text": {
 				"es": "Tiende a ser criticón"
 			},
 			"trait" : "Agreeableness"
 		},
 		{
-			"id": "bf_3",
+			"id": "3",
 			"text": {
 				"es": "Es minucioso en el trabajo"
 			},
 			"trait" : "Conscientiousness"
 		},
 		{
-			"id": "bf_4",
+			"id": "4",
 			"text": {
 				"es": "Es depresivo, melancólico"
 			},
 			"trait" : "Neuroticism"
 		},
 		{
-			"id": "bf_5",
+			"id": "5",
 			"text": {
 				"es": "Es original, se le ocurren ideas nuevas"
 			},
 			"trait" : "Openness"
 		},
 		{
-			"id": "bf_6",
+			"id": "6",
 			"text": {
 				"es": "Es reservado"
 			},
 			"trait" : "Extraversion"
 		},
 		{
-			"id": "bf_7",
+			"id": "7",
 			"text": {
 				"es": "Es generoso y ayuda a los demás"
 			},
 			"trait" : "Agreeableness"
 		},
 		{
-			"id": "bf_8",
+			"id": "8",
 			"text": {
 				"es": "Puede a veces ser algo descuidado"
 			},
 			"trait" : "Conscientiousness"
 		},
 		{
-			"id": "bf_9",
+			"id": "9",
 			"text": {
 				"es": "Es calmado, controla bien el estrés"
 			},
 			"trait" : "Neuroticism"
 		},
 		{
-			"id": "bf_10",
+			"id": "10",
 			"text": {
 				"es": "Tiene intereses muy diversos"
 			},
 			"trait" : "Openness"
 		},
 		{
-			"id": "bf_11",
+			"id": "11",
 			"text": {
 				"es": "Está lleno de energía"
 			},
 			"trait" : "Extraversion"
 		},
 		{
-			"id": "bf_12",
+			"id": "12",
 			"text": {
 				"es": "Prefiere trabajos que son rutinarios"
 			},
 			"trait" : "Openness"
 		},
 		{
-			"id": "bf_13",
+			"id": "13",
 			"text": {
 				"es": "Inicia disputas con los demás"
 			},
 			"trait" : "Agreeableness"
 		},
 		{
-			"id": "bf_14",
+			"id": "14",
 			"text": {
 				"es": "Es trabajador, cumplidor, digno de confianza"
 			},
 			"trait" : "Conscientiousness"
 		},
 		{
-			"id": "bf_15",
+			"id": "15",
 			"text": {
 				"es": "Con frecuencia se pone tenso"
 			},
 			"trait" : "Neuroticism"
 		},
 		{
-			"id": "bf_16",
+			"id": "16",
 			"text": {
 				"es": "Tiende a ser callado"
 			},
 			"trait" : "Extraversion"
 		},
 		{
-			"id": "bf_17",
+			"id": "17",
 			"text": {
 				"es": "Valora lo artístico, lo estético"
 			},
 			"trait" : "Openness"
 		},
 		{
-			"id": "bf_18",
+			"id": "18",
 			"text": {
 				"es": "Tiende a ser desorganizado"
 			},
 			"trait" : "Conscientiousness"
 		},
 		{
-			"id": "bf_19",
+			"id": "19",
 			"text": {
 				"es": "Es emocionalmente estable, difícil de alterar"
 			},
 			"trait" : "Neuroticism"
 		},
 		{
-			"id": "bf_20",
+			"id": "20",
 			"text": {
 				"es": "Tiene una imaginación activa"
 			},
 			"trait" : "Openness"
 		},
 		{
-			"id": "bf_21",
+			"id": "21",
 			"text": {
 				"es": "Persevera hasta terminar el trabajo"
 			},
 			"trait" : "Conscientiousness"
 		},
 		{
-			"id": "bf_22",
+			"id": "22",
 			"text": {
 				"es": "Es a veces maleducado con los demás"
 			},
 			"trait" : "Agreeableness"
 		},
 		{
-			"id": "bf_23",
+			"id": "23",
 			"text": {
 				"es": "Es inventivo"
 			},
 			"trait" : "Openness"
 		},
 		{
-			"id": "bf_24",
+			"id": "24",
 			"text": {
 				"es": "Es generalmente confiado"
 			},
 			"trait" : "Agreeableness"
 		},
 		{
-			"id": "bf_25",
+			"id": "25",
 			"text": {
 				"es": "Tiende a ser flojo, vago"
 			},
 			"trait" : "Conscientiousness"
 		},
 		{
-			"id": "bf_26",
+			"id": "26",
 			"text": {
 				"es": "Se preocupa mucho por las cosas"
 			},
 			"trait" : "Neuroticism"
 		},
 		{
-			"id": "bf_27",
+			"id": "27",
 			"text": {
 				"es": "Es a veces tímido, inhibido"
 			},
 			"trait" : "Extraversion"
 		},
 		{
-			"id": "bf_28",
+			"id": "28",
 			"text": {
 				"es": "Es indulgente, no le cuesta perdonar"
 			},
 			"trait" : "Agreeableness"
 		},
 		{
-			"id": "bf_29",
+			"id": "29",
 			"text": {
 				"es": "Hace las cosas de manera eficiente"
 			},
 			"trait" : "Conscientiousness"
 		},
 		{
-			"id": "bf_30",
+			"id": "30",
 			"text": {
 				"es": "Es temperamental, de humor cambiante"
 			},
 			"trait" : "Neuroticism"
 		},
 		{
-			"id": "bf_31",
+			"id": "31",
 			"text": {
 				"es": "Es ingenioso, analítico"
 			},
 			"trait" : "Openness"
 		},
 		{
-			"id": "bf_32",
+			"id": "32",
 			"text": {
 				"es": "Irradia entusiasmo"
 			},
 			"trait" : "Extraversion"
 		},
 		{
-			"id": "bf_33",
+			"id": "33",
 			"text": {
 				"es": "Es a veces frío y distante"
 			},
 			"trait" : "Agreeableness"
 		},
 		{
-			"id": "bf_34",
+			"id": "34",
 			"text": {
 				"es": "Hace planes y los sigue cuidadosamente"
 			},
 			"trait" : "Conscientiousness"
 		},
 		{
-			"id": "bf_35",
+			"id": "35",
 			"text": {
 				"es": "Mantiene la calma en situaciones difíciles"
 			},
 			"trait" : "Neuroticism"
 		},
 		{
-			"id": "bf_36",
+			"id": "36",
 			"text": {
 				"es": "Le gusta reflexionar, jugar con las ideas"
 			},
 			"trait" : "Openness"
 		},
 		{
-			"id": "bf_37",
+			"id": "37",
 			"text": {
 				"es": "Es considerado y amable con casi todo el mundo"
 			},
 			"trait" : "Agreeableness"
 		},
 		{
-			"id": "bf_38",
+			"id": "38",
 			"text": {
 				"es": "Se pone nervioso con facilidad"
 			},
 			"trait" : "Neuroticism"
 		},
 		{
-			"id": "bf_39",
+			"id": "39",
 			"text": {
 				"es": "Es educado en arte, música o literatura"
 			},
 			"trait" : "Openness"
 		},
 		{
-			"id": "bf_40",
+			"id": "40",
 			"text": {
 				"es": "Es asertivo, no teme expresar lo que quiere"
 			},
 			"trait" : "Extraversion"
 		},
 		{
-			"id": "bf_41",
+			"id": "41",
 			"text": {
 				"es": "Le gusta cooperar con los demás"
 			},
 			"trait" : "Agreeableness"
 		},
 		{
-			"id": "bf_42",
+			"id": "42",
 			"text": {
 				"es": "Se distrae con facilidad"
 			},
 			"trait" : "Conscientiousness"
 		},
 		{
-			"id": "bf_43",
+			"id": "43",
 			"text": {
 				"es": "Es extrovertido, sociable"
 			},
 			"trait" : "Extraversion"
 		},
 		{
-			"id": "bf_44",
+			"id": "44",
 			"text": {
 				"es": "Tiene pocos intereses artísticos"
 			},
