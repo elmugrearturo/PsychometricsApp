@@ -1,22 +1,26 @@
 package com.example.mipersonalidad
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import com.example.mipersonalidad.models.QuestionMultipleChoice
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
+import com.example.mipersonalidad.models.QuestionBFI
+import com.example.mipersonalidad.room.AppDatabase
+import com.example.mipersonalidad.room.BFIScores
+import kotlinx.coroutines.launch
 
-// import com.google.gson.Gson
-// import com.google.gson.reflect.TypeToken
 import org.json.JSONObject
 import org.json.JSONArray
 import java.io.IOException
-import java.io.InputStreamReader
-
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -34,7 +38,9 @@ class BFIFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var questionList: List<QuestionMultipleChoice>
+    private lateinit var questionList: List<QuestionBFI>
+    private lateinit var testInstructions: String
+    private var currentQuestionIndex: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,14 +58,78 @@ class BFIFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_b_f_i, container, false)
     }
 
+    @SuppressLint("CutPasteId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // Load the questions from the JSON file
         questionList = loadQuestionsFromAssets()
 
+        // Display instructions
+        view.findViewById<TextView>(R.id.instructionsText)?.text = testInstructions
+
         // Display the first question or handle the questions as needed
-        displayQuestion(0)
+        displayQuestion(currentQuestionIndex)
+
+        // LISTENERS
+        val previousButton = view.findViewById<Button>(R.id.previousQuestionButton)
+        val nextButton = view.findViewById<Button>(R.id.nextQuestionButton)
+        val radioGroup = view.findViewById<RadioGroup>(R.id.answerOptions)
+
+        // Enable next on selection
+        radioGroup.setOnCheckedChangeListener { _, _ ->
+            // Enable the next button when an option is selected
+            nextButton.isEnabled = true
+        }
+
+        // Handle next button click
+        nextButton.setOnClickListener {
+
+            // Save selection
+            val selection = radioGroup.checkedRadioButtonId
+            questionList[currentQuestionIndex].selection = selection
+
+            if (currentQuestionIndex < questionList.size - 1) {
+                currentQuestionIndex++
+                displayQuestion(currentQuestionIndex)
+            } else {
+                // Submit the test and show results
+                val scores = calculateScores()
+                val normalized_scores = normalizeScores(scores)
+
+                val db = Room.databaseBuilder(
+                    requireContext(),
+                    AppDatabase::class.java, "app-database"
+                ).build()
+
+                lifecycleScope.launch{
+                    val bfiScores = BFIScores(
+                        extraversion = scores["Extraversion"]!!,
+                        agreeableness = scores["Agreeableness"]!!,
+                        openness = scores["Openness"]!!,
+                        conscientiousness = scores["Conscientiousness"]!!,
+                        neuroticism = scores["Neuroticism"]!!,
+                        timestamp = System.currentTimeMillis()
+                        )
+                    db.bfiDao().insertScore(bfiScores)
+                }
+
+                // Load ResultsFragment
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, TestSelectionFragment())
+                    .commit()
+            }
+        }
+
+        // Handle previous button click
+        previousButton.setOnClickListener {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--
+                displayQuestion(currentQuestionIndex)
+            }
+        }
+
+
     }
 
     private fun loadJSONFromAssets(): String? {
@@ -78,12 +148,15 @@ class BFIFragment : Fragment() {
         return json
     }
 
-    private fun loadQuestionsFromAssets(): List<QuestionMultipleChoice> {
+    private fun loadQuestionsFromAssets(): List<QuestionBFI> {
         // Parse the JSON file into a list of QuestionMultipleChoice objects
-        val questionList = mutableListOf<QuestionMultipleChoice>()
+        val questionList = mutableListOf<QuestionBFI>()
 
         // Gets main object
         val jsonMainObject = JSONObject(loadJSONFromAssets())
+
+        // Get Instructions
+        testInstructions = jsonMainObject.getJSONObject("instructions").getString("es")
 
         // Gets answers
         val jsonAnswerArray = jsonMainObject.getJSONArray("answers")
@@ -95,8 +168,8 @@ class BFIFragment : Fragment() {
 
         // Gets questions
         val jsonQuestionArray = jsonMainObject.getJSONArray("questions")
-        // Loop through each object in the array
 
+        // Loop through each object in the array
         for (i in 0 until jsonQuestionArray.length()) {
             val jsonQuestionObject = jsonQuestionArray.getJSONObject(i)
 
@@ -104,10 +177,10 @@ class BFIFragment : Fragment() {
             val id = jsonQuestionObject.getInt("id")
             // TODO: Check how it would be done for multiple languages
             val text = jsonQuestionObject.getJSONObject("text").getString("es")
-            // val trait = jsonQuestionObject.getString("trait")
+            val trait = jsonQuestionObject.getString("trait")
 
             // Create a Question object and add it to the list
-            val question = QuestionMultipleChoice(id, text, optionsList)
+            val question = QuestionBFI(id, text, optionsList, trait)
             questionList.add(question)
         }
 
@@ -115,17 +188,97 @@ class BFIFragment : Fragment() {
     }
 
     private fun displayQuestion(index: Int) {
+        val previousButton = view?.findViewById<Button>(R.id.previousQuestionButton)
+        val nextButton = view?.findViewById<Button>(R.id.nextQuestionButton)
         val question = questionList[index]
+
+        if (index == 0){
+            previousButton?.isEnabled = false
+        } else {
+            if(!previousButton?.isEnabled!!) {
+                previousButton.isEnabled = true
+            }
+        }
+
+        if (index < questionList.size - 1) {
+            if (nextButton?.text != "Siguiente"){
+                nextButton?.text = "Siguiente"
+                }
+        } else {
+            nextButton?.text = "Ver resultado"
+        }
+
+        if (question.selection == null){
+            nextButton?.isEnabled = false
+        }
+
         view?.findViewById<TextView>(R.id.questionText)?.text = question.text
 
         val radioGroup = view?.findViewById<RadioGroup>(R.id.answerOptions)
         radioGroup?.removeAllViews()
 
-        question.options.forEach { option ->
+        question.options.forEachIndexed { optionIndex, option ->
             val radioButton = RadioButton(context)
             radioButton.text = option
+            radioButton.id = optionIndex
             radioGroup?.addView(radioButton)
         }
+        if (question.selection != null) {
+            val selectedRadioButton = radioGroup?.getChildAt(question.selection!!) as RadioButton
+            selectedRadioButton.isChecked = true
+        }
+    }
+
+    private fun calculateScores() : Map<String, Int> {
+
+        val scores = mutableMapOf<String, Int>(
+            "Openness" to 0,
+            "Conscientiousness" to 0,
+            "Extraversion" to 0,
+            "Agreeableness" to 0,
+            "Neuroticism" to 0
+        )
+
+        val toReverse = arrayOf(2, 6, 8, 9, 12, 13, 16, 18, 19, 22, 25, 27, 33, 35, 42, 44)
+
+        fun reverseScore(score:Int) : Int{
+            return 6 - score
+        }
+
+        for (question in questionList){
+
+            val score = if(question.id in toReverse){
+                reverseScore(question.selection!! + 1)
+            } else {
+                question.selection!! + 1
+            }
+
+            //Log.d("SCORE" + ": ", question.id.toString() + ": " + score.toString())
+
+            scores[question.trait] = scores[question.trait]!! + score
+        }
+
+        return scores
+    }
+
+    private fun normalizeScores(input_scores : Map<String, Int>) : Map<String, Int> {
+
+        val output_scores = mutableMapOf<String, Int>(
+            "Openness" to input_scores["Openness"]!!,
+            "Conscientiousness" to input_scores["Conscientiousness"]!!,
+            "Extraversion" to input_scores["Extraversion"]!!,
+            "Agreeableness" to input_scores["Agreeableness"]!!,
+            "Neuroticism" to input_scores["Neuroticism"]!!
+        )
+
+        // Normalize to 0-100
+        output_scores["Openness"] = (output_scores["Openness"]!! * 100) / 50
+        output_scores["Conscientiousness"] = (output_scores["Conscientiousness"]!! * 100) / 45
+        output_scores["Extraversion"] = (output_scores["Extraversion"]!! * 100) / 40
+        output_scores["Agreeableness"] = (output_scores["Agreeableness"]!! * 100) / 45
+        output_scores["Neuroticism"] = (output_scores["Neuroticism"]!! * 100) / 40
+
+        return output_scores
     }
 
     companion object {

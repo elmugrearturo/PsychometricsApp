@@ -1,36 +1,36 @@
 {
 	"instructions" : {
-		"es" : "Las siguientes expresiones le describen a usted con más o menos precisión. Por favor escoja un número para cada una de las siguientes expresiones, indicando así hasta qué punto está de acuerdo o en desacuerdo en cómo le describe a usted.\nMe veo a mí mismo(a) como alguien que..."
+		"es" : "Las siguientes expresiones le describen a usted con más o menos precisión. Por favor escoja un número para cada una de ellas (1-5), indicando así hasta qué punto está de acuerdo o en desacuerdo en cómo le describe a usted.\n\nMe veo a mí mismo(a) como alguien que...\n"
 	},
 	"answers": [
 		{
 			"id" : "1",
 			"text" : {
-				"es": "Muy en desacuerdo"
+				"es": "(1) Muy en desacuerdo"
 			}
 		},
 		{
 			"id": "2",
 			"text": {
-				"es": "Ligeramente en desacuerdo"
+				"es": "(2) Ligeramente en desacuerdo"
 			}
 		},
 		{
 			"id": "3",
 			"text": {
-				"es": "Ni de acuerdo ni en desacuerdo"
+				"es": "(3) Ni de acuerdo ni en desacuerdo"
 			}
 		},
 		{
 			"id": "4",
 			"text": {
-				"es": "Ligeramente de acuerdo"
+				"es": "(4) Ligeramente de acuerdo"
 			}
 		},
 		{
 			"id": "5",
 			"text": {
-				"es": "Muy de acuerdo"
+				"es": "(5) Muy de acuerdo"
 			}
 		}
 	],
