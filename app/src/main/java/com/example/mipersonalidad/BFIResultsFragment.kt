@@ -106,14 +106,39 @@ class BFIResultsFragment : Fragment() {
         return outputScores
     }
 
-    private fun displayResults(result: BFIScores) {
-        val normalizedScores = normalizeScores(result)
+    private fun normalizeScoresMinMax(inputScores : BFIScores) : Map<String, Float> {
+
+        val outputScores = mutableMapOf<String, Float>(
+            "Openness" to inputScores.openness / 10f,
+            "Conscientiousness" to inputScores.conscientiousness / 9f,
+            "Extraversion" to inputScores.extraversion / 8f,
+            "Agreeableness" to inputScores.agreeableness / 9f,
+            "Neuroticism" to inputScores.neuroticism / 8f
+        )
+
+        // Normalize to 0-1
+        // (value - min) / (max - min)
+        val maxValue = 5
+        val minValue = 1
+        val denominator = maxValue - minValue
+
+        outputScores["Openness"] = (outputScores["Openness"]!! * minValue * 100) / denominator
+        outputScores["Conscientiousness"] = (outputScores["Conscientiousness"]!! * minValue * 100) / denominator
+        outputScores["Extraversion"] = (outputScores["Extraversion"]!! * minValue * 100) / denominator
+        outputScores["Agreeableness"] = (outputScores["Agreeableness"]!! * minValue * 100) / denominator
+        outputScores["Neuroticism"] = (outputScores["Neuroticism"]!! * minValue * 100) / denominator
+
+        return outputScores
+    }
+
+    private fun displayResults(results: BFIScores) {
+        val normalizedScores = normalizeScoresMinMax(results)
         val entries = mutableListOf<BarEntry>().apply {
-            add(BarEntry(0f, normalizedScores["Openness"]!!.toFloat()))
-            add(BarEntry(1f, normalizedScores["Conscientiousness"]!!.toFloat()))
-            add(BarEntry(2f, normalizedScores["Extraversion"]!!.toFloat()))
-            add(BarEntry(3f, normalizedScores["Agreeableness"]!!.toFloat()))
-            add(BarEntry(4f, normalizedScores["Neuroticism"]!!.toFloat()))
+            add(BarEntry(0f, normalizedScores["Openness"]!!))
+            add(BarEntry(1f, normalizedScores["Conscientiousness"]!!))
+            add(BarEntry(2f, normalizedScores["Extraversion"]!!))
+            add(BarEntry(3f, normalizedScores["Agreeableness"]!!))
+            add(BarEntry(4f, normalizedScores["Neuroticism"]!!))
         }
 
         val barDataSet = BarDataSet(entries, "Resultados de los Cinco Factores")
@@ -131,27 +156,78 @@ class BFIResultsFragment : Fragment() {
         barChart.invalidate()  // Refresh the chart
 
         // Create a text explanation
-        val explanation = buildExplanation(result)
+        val explanation = buildExplanation(results, normalizedScores)
         textExplanation.text = explanation
     }
 
-    private fun buildExplanation(result: BFIScores): String {
+    private fun buildExplanation(results: BFIScores, normalizedScores:Map<String, Float>): String {
         val explanationBuilder = StringBuilder()
 
         explanationBuilder.append("Tus resultados:\n")
-        explanationBuilder.append("Apertura a la experiencia: ${result.openness}/5\n")
-        explanationBuilder.append("Responsabilidad: ${result.conscientiousness}/5\n")
-        explanationBuilder.append("Extraversión: ${result.extraversion}/5\n")
-        explanationBuilder.append("Amabilidad: ${result.agreeableness}/5\n")
-        explanationBuilder.append("Neuroticismo: ${result.neuroticism}/5\n\n")
+        explanationBuilder.append("Apertura a la experiencia: ${results.openness/10f}/5.00\n")
+        explanationBuilder.append("Responsabilidad: ${results.conscientiousness/9f}/5.00\n")
+        explanationBuilder.append("Extraversión: ${results.extraversion/8f}/5.00\n")
+        explanationBuilder.append("Amabilidad: ${results.agreeableness/9f}/5.00\n")
+        explanationBuilder.append("Neuroticismo: ${results.neuroticism/8f}/5.00\n\n")
 
-        explanationBuilder.append("Apertura a la experiencia: Este rasgo refleja la curiosidad intelectual, la creatividad y la preferencia por la variedad y la novedad. Las personas con alta apertura son imaginativas, artísticas y están abiertas a nuevas ideas y experiencias. Por el contrario, quienes tienen baja apertura tienden a ser más convencionales, prácticas y prefieren rutinas familiares.\n")
-        explanationBuilder.append("Responsabilidad: Este factor indica el grado de organización, diligencia y control que tiene una persona sobre sus impulsos. Las personas con alta responsabilidad son organizadas, meticulosas y tienen un fuerte sentido del deber. Aquellas con baja responsabilidad pueden ser más impulsivas, desorganizadas y menos enfocadas en alcanzar metas a largo plazo.\n")
-        explanationBuilder.append("Extraversión: Este rasgo se refiere a la energía social, la sociabilidad y la tendencia a buscar la estimulación externa. Las personas extrovertidas son enérgicas, asertivas y disfrutan de la interacción social. Por otro lado, las personas con baja extraversión, o introvertidas, tienden a ser más reservadas, reflexivas y disfrutan de la soledad.\n")
-        explanationBuilder.append("Amabilidad: Este factor mide la tendencia a ser compasivo, cooperativo y a mantener relaciones interpersonales positivas. Las personas con alta amabilidad son empáticas, confiables y buscan evitar conflictos. Las personas con baja amabilidad pueden ser más competitivas, críticas y enfocadas en sus propios intereses.\n")
-        explanationBuilder.append("Neuroticismo: Este rasgo evalúa la estabilidad emocional y la tendencia a experimentar emociones negativas como ansiedad, depresión o irritabilidad. Las personas con alto neuroticismo son más propensas a sufrir estrés y tener fluctuaciones emocionales intensas. Las personas con bajo neuroticismo son más emocionalmente estables y tienden a manejar mejor las situaciones estresantes.\n")
+        val openness = normalizedScores["Openness"]!!.toInt()
+        val conscientiousness = normalizedScores["Conscientiousness"]!!.toInt()
+        val extraversion = normalizedScores["Extraversion"]!!.toInt()
+        val agreeableness = normalizedScores["Agreeableness"]!!.toInt()
+        val neuroticism = normalizedScores["Neuroticism"]!!.toInt()
+
+        explanationBuilder.append(getOpennessFeedback(openness))
+        explanationBuilder.append(getConscientiousnessFeedback(conscientiousness))
+        explanationBuilder.append(getExtraversionFeedback(extraversion))
+        explanationBuilder.append(getAgreeablenessFeedback(agreeableness))
+        explanationBuilder.append(getNeuroticismFeedback(neuroticism))
 
         return explanationBuilder.toString()
+    }
+
+    private fun getOpennessFeedback(score: Int): String {
+        return when (score) {
+            in 0..30 -> getString(R.string.openness_low)
+            in 31..60 -> getString(R.string.openness_medium)
+            in 61..100 -> getString(R.string.openness_high)
+            else -> getString(R.string.score_out_of_range)
+        }
+    }
+
+    private fun getConscientiousnessFeedback(score: Int): String {
+        return when (score) {
+            in 0..30 -> getString(R.string.conscientiousness_low)
+            in 31..60 -> getString(R.string.conscientiousness_medium)
+            in 61..100 -> getString(R.string.conscientiousness_high)
+            else -> getString(R.string.score_out_of_range)
+        }
+    }
+
+    private fun getExtraversionFeedback(score: Int): String {
+        return when (score) {
+            in 0..30 -> getString(R.string.extraversion_low)
+            in 31..60 -> getString(R.string.extraversion_medium)
+            in 61..100 -> getString(R.string.extraversion_high)
+            else -> getString(R.string.score_out_of_range)
+        }
+    }
+
+    private fun getAgreeablenessFeedback(score: Int): String {
+        return when (score) {
+            in 0..30 -> getString(R.string.agreeableness_low)
+            in 31..60 -> getString(R.string.agreeableness_medium)
+            in 61..100 -> getString(R.string.agreeableness_high)
+            else -> getString(R.string.score_out_of_range)
+        }
+    }
+
+    private fun getNeuroticismFeedback(score: Int): String {
+        return when (score) {
+            in 0..30 -> getString(R.string.neuroticism_low)
+            in 31..60 -> getString(R.string.neuroticism_medium)
+            in 61..100 -> getString(R.string.neuroticism_high)
+            else -> getString(R.string.score_out_of_range)
+        }
     }
 
     companion object {

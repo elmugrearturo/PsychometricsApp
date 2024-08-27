@@ -47,6 +47,9 @@ class TestSelectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Clear navigation back stack
+        findNavController().popBackStack(R.id.firstFragment, false)
+
         val resultsButton = view.findViewById<Button>(R.id.btnBFITestResults)
 
         val db = Room.databaseBuilder(
