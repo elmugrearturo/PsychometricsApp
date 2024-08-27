@@ -95,7 +95,7 @@ class BFIFragment : Fragment() {
             } else {
                 // Submit the test and show results
                 val scores = calculateScores()
-                val normalized_scores = normalizeScores(scores)
+                //val normalized_scores = normalizeScores(scores)
 
                 val db = Room.databaseBuilder(
                     requireContext(),
