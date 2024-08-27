@@ -12,6 +12,9 @@ interface BFIDao {
     @Query("SELECT * FROM bfi_scores ORDER BY timestamp DESC")
     suspend fun getAllScores(): List<BFIScores>
 
+    @Query("SELECT * FROM bfi_scores ORDER BY timestamp DESC LIMIT 1")
+    suspend fun getLastInsertedScore(): BFIScores?
+
     @Delete
-    fun delete(score: BFIScores)
+    suspend fun delete(score: BFIScores)
 }

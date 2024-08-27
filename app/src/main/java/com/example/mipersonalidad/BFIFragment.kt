@@ -95,7 +95,6 @@ class BFIFragment : Fragment() {
             } else {
                 // Submit the test and show results
                 val scores = calculateScores()
-                //val normalized_scores = normalizeScores(scores)
 
                 val db = Room.databaseBuilder(
                     requireContext(),
@@ -116,7 +115,7 @@ class BFIFragment : Fragment() {
 
                 // Load ResultsFragment
                 parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, TestSelectionFragment())
+                    .replace(R.id.fragment_container, BFIResultsFragment())
                     .commit()
             }
         }
@@ -259,26 +258,6 @@ class BFIFragment : Fragment() {
         }
 
         return scores
-    }
-
-    private fun normalizeScores(input_scores : Map<String, Int>) : Map<String, Int> {
-
-        val output_scores = mutableMapOf<String, Int>(
-            "Openness" to input_scores["Openness"]!!,
-            "Conscientiousness" to input_scores["Conscientiousness"]!!,
-            "Extraversion" to input_scores["Extraversion"]!!,
-            "Agreeableness" to input_scores["Agreeableness"]!!,
-            "Neuroticism" to input_scores["Neuroticism"]!!
-        )
-
-        // Normalize to 0-100
-        output_scores["Openness"] = (output_scores["Openness"]!! * 100) / 50
-        output_scores["Conscientiousness"] = (output_scores["Conscientiousness"]!! * 100) / 45
-        output_scores["Extraversion"] = (output_scores["Extraversion"]!! * 100) / 40
-        output_scores["Agreeableness"] = (output_scores["Agreeableness"]!! * 100) / 45
-        output_scores["Neuroticism"] = (output_scores["Neuroticism"]!! * 100) / 40
-
-        return output_scores
     }
 
     companion object {
