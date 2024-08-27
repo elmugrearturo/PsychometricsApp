@@ -15,6 +15,9 @@ interface BFIDao {
     @Query("SELECT * FROM bfi_scores ORDER BY timestamp DESC LIMIT 1")
     suspend fun getLastInsertedScore(): BFIScores?
 
+    @Query("SELECT COUNT(*) FROM bfi_scores")
+    suspend fun getRowCount(): Int
+
     @Delete
     suspend fun delete(score: BFIScores)
 }

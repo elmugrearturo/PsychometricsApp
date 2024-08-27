@@ -12,6 +12,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.room.Room
 import com.example.mipersonalidad.models.QuestionBFI
 import com.example.mipersonalidad.room.AppDatabase
@@ -114,9 +115,7 @@ class BFIFragment : Fragment() {
                 }
 
                 // Load ResultsFragment
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, BFIResultsFragment())
-                    .commit()
+                findNavController().navigate(R.id.action_bfiFragment_to_bfiResultsFragment)
             }
         }
 
@@ -127,7 +126,6 @@ class BFIFragment : Fragment() {
                 displayQuestion(currentQuestionIndex)
             }
         }
-
 
     }
 

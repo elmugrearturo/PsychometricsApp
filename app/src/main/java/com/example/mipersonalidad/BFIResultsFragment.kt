@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.room.Room
 import com.example.mipersonalidad.room.AppDatabase
 import com.example.mipersonalidad.room.BFIDao
@@ -55,6 +58,15 @@ class BFIResultsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Override back button
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            //val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            //val navController = navHostFragment.navController
+
+            // Navigate to the first fragment
+            findNavController().navigate(R.id.action_bfiResultsFragment_to_firstFragment)
+        }
 
         barChart = view.findViewById(R.id.bfiBarChart)
         textExplanation = view.findViewById(R.id.textExplanation)

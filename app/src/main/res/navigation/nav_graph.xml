@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.mipersonalidad.TestSelectionFragment"
+        tools:layout="@layout/fragment_test_selection">
+
+        <action
+            android:id="@+id/action_firstFragment_to_bfiResultsFragment"
+            app:destination="@id/bfiResultsFragment" />
+
+        <action
+            android:id="@+id/action_firstFragment_to_bfiFragment"
+            app:destination="@id/bfiFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bfiFragment"
+        android:name="com.example.mipersonalidad.BFIFragment"
+        tools:layout="@layout/fragment_b_f_i">
+
+        <action
+            android:id="@+id/action_bfiFragment_to_bfiResultsFragment"
+            app:destination="@id/bfiResultsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bfiResultsFragment"
+        android:name="com.example.mipersonalidad.BFIResultsFragment"
+        tools:layout="@layout/fragment_b_f_i_results">
+
+        <!-- Action to navigate back to the firstFragment -->
+        <action
+            android:id="@+id/action_bfiResultsFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+</navigation>

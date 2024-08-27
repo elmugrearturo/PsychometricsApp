@@ -7,6 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.room.Room
+import com.example.mipersonalidad.room.AppDatabase
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,13 +47,33 @@ class TestSelectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val resultsButton = view.findViewById<Button>(R.id.btnBFITestResults)
+
+        val db = Room.databaseBuilder(
+            requireContext(),
+            AppDatabase::class.java, "app-database"
+        ).build()
+
+        lifecycleScope.launch {
+            val rowCount = db.bfiDao().getRowCount()
+            if(rowCount == 0){
+                resultsButton.isEnabled = false
+            }else{
+                if(!resultsButton.isEnabled){
+                    resultsButton.isEnabled = true
+                }
+            }
+        }
+
         // Handle BFI button click
         view.findViewById<Button>(R.id.btnBFITest).setOnClickListener {
             // Load BFI Fragment
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, BFIFragment())
-                .addToBackStack(null)  // Allows user to navigate back
-                .commit()
+            findNavController().navigate(R.id.action_firstFragment_to_bfiFragment)
+        }
+
+        resultsButton.setOnClickListener {
+            // Load BFI Fragment
+            findNavController().navigate(R.id.action_firstFragment_to_bfiResultsFragment)
         }
     }
 
