@@ -122,11 +122,17 @@ class BFIResultsFragment : Fragment() {
         val minValue = 1
         val denominator = maxValue - minValue
 
-        outputScores["Openness"] = (outputScores["Openness"]!! * minValue * 100) / denominator
-        outputScores["Conscientiousness"] = (outputScores["Conscientiousness"]!! * minValue * 100) / denominator
-        outputScores["Extraversion"] = (outputScores["Extraversion"]!! * minValue * 100) / denominator
-        outputScores["Agreeableness"] = (outputScores["Agreeableness"]!! * minValue * 100) / denominator
-        outputScores["Neuroticism"] = (outputScores["Neuroticism"]!! * minValue * 100) / denominator
+        outputScores["Openness"] = (outputScores["Openness"]!! - minValue) / denominator
+        outputScores["Conscientiousness"] = (outputScores["Conscientiousness"]!! - minValue) / denominator
+        outputScores["Extraversion"] = (outputScores["Extraversion"]!! - minValue) / denominator
+        outputScores["Agreeableness"] = (outputScores["Agreeableness"]!! - minValue) / denominator
+        outputScores["Neuroticism"] = (outputScores["Neuroticism"]!! - minValue) / denominator
+
+        outputScores["Openness"] = outputScores["Openness"]!! * 100
+        outputScores["Conscientiousness"] = outputScores["Conscientiousness"]!! * 100
+        outputScores["Extraversion"] = outputScores["Extraversion"]!! * 100
+        outputScores["Agreeableness"] = outputScores["Agreeableness"]!! * 100
+        outputScores["Neuroticism"] = outputScores["Neuroticism"]!! * 100
 
         return outputScores
     }
@@ -146,7 +152,7 @@ class BFIResultsFragment : Fragment() {
         barChart.data = barData
 
         // Customize the chart
-        val labels = listOf("Apertura", "Responsabilidad", "Extraversión", "Amabilidad", "Neuroticismo")
+        val labels = listOf("Ae", "Re", "Ex", "Am", "Ne")
         barChart.xAxis.valueFormatter = IndexAxisValueFormatter(labels)
         barChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         barChart.xAxis.granularity = 1f
@@ -163,12 +169,12 @@ class BFIResultsFragment : Fragment() {
     private fun buildExplanation(results: BFIScores, normalizedScores:Map<String, Float>): String {
         val explanationBuilder = StringBuilder()
 
-        explanationBuilder.append("Tus resultados:\n")
-        explanationBuilder.append("Apertura a la experiencia: ${results.openness/10f}/5.00\n")
-        explanationBuilder.append("Responsabilidad: ${results.conscientiousness/9f}/5.00\n")
-        explanationBuilder.append("Extraversión: ${results.extraversion/8f}/5.00\n")
-        explanationBuilder.append("Amabilidad: ${results.agreeableness/9f}/5.00\n")
-        explanationBuilder.append("Neuroticismo: ${results.neuroticism/8f}/5.00\n\n")
+        explanationBuilder.append("Tus resultados:\n\n")
+        explanationBuilder.append("Apertura a la experiencia (Ae): ${results.openness/10f}/5.00\n")
+        explanationBuilder.append("Responsabilidad (Re): ${results.conscientiousness/9f}/5.00\n")
+        explanationBuilder.append("Extraversión (Ex): ${results.extraversion/8f}/5.00\n")
+        explanationBuilder.append("Amabilidad (Am): ${results.agreeableness/9f}/5.00\n")
+        explanationBuilder.append("Neuroticismo (Ne): ${results.neuroticism/8f}/5.00\n\n")
 
         val openness = normalizedScores["Openness"]!!.toInt()
         val conscientiousness = normalizedScores["Conscientiousness"]!!.toInt()
@@ -176,10 +182,10 @@ class BFIResultsFragment : Fragment() {
         val agreeableness = normalizedScores["Agreeableness"]!!.toInt()
         val neuroticism = normalizedScores["Neuroticism"]!!.toInt()
 
-        explanationBuilder.append(getOpennessFeedback(openness))
-        explanationBuilder.append(getConscientiousnessFeedback(conscientiousness))
-        explanationBuilder.append(getExtraversionFeedback(extraversion))
-        explanationBuilder.append(getAgreeablenessFeedback(agreeableness))
+        explanationBuilder.append(getOpennessFeedback(openness) + "\n\n")
+        explanationBuilder.append(getConscientiousnessFeedback(conscientiousness) + "\n\n")
+        explanationBuilder.append(getExtraversionFeedback(extraversion) + "\n\n")
+        explanationBuilder.append(getAgreeablenessFeedback(agreeableness) + "\n\n")
         explanationBuilder.append(getNeuroticismFeedback(neuroticism))
 
         return explanationBuilder.toString()
@@ -190,7 +196,7 @@ class BFIResultsFragment : Fragment() {
             in 0..30 -> getString(R.string.openness_low)
             in 31..60 -> getString(R.string.openness_medium)
             in 61..100 -> getString(R.string.openness_high)
-            else -> getString(R.string.score_out_of_range)
+            else -> getString(R.string.score_out_of_range) + " (O)"
         }
     }
 
@@ -199,7 +205,7 @@ class BFIResultsFragment : Fragment() {
             in 0..30 -> getString(R.string.conscientiousness_low)
             in 31..60 -> getString(R.string.conscientiousness_medium)
             in 61..100 -> getString(R.string.conscientiousness_high)
-            else -> getString(R.string.score_out_of_range)
+            else -> getString(R.string.score_out_of_range) + " (C)"
         }
     }
 
@@ -208,7 +214,7 @@ class BFIResultsFragment : Fragment() {
             in 0..30 -> getString(R.string.extraversion_low)
             in 31..60 -> getString(R.string.extraversion_medium)
             in 61..100 -> getString(R.string.extraversion_high)
-            else -> getString(R.string.score_out_of_range)
+            else -> getString(R.string.score_out_of_range) + " (E)"
         }
     }
 
@@ -217,7 +223,7 @@ class BFIResultsFragment : Fragment() {
             in 0..30 -> getString(R.string.agreeableness_low)
             in 31..60 -> getString(R.string.agreeableness_medium)
             in 61..100 -> getString(R.string.agreeableness_high)
-            else -> getString(R.string.score_out_of_range)
+            else -> getString(R.string.score_out_of_range) + " (A)"
         }
     }
 
@@ -226,7 +232,7 @@ class BFIResultsFragment : Fragment() {
             in 0..30 -> getString(R.string.neuroticism_low)
             in 31..60 -> getString(R.string.neuroticism_medium)
             in 61..100 -> getString(R.string.neuroticism_high)
-            else -> getString(R.string.score_out_of_range)
+            else -> getString(R.string.score_out_of_range) + " (N)"
         }
     }
 
