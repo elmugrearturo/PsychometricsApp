@@ -14,8 +14,22 @@
             app:destination="@id/bfiResultsFragment" />
 
         <action
+            android:id="@+id/action_firstFragment_to_bfInformationFragment"
+            app:destination="@id/bfInformationFragment" />
+
+        <action
             android:id="@+id/action_firstFragment_to_bfiFragment"
             app:destination="@id/bfiFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bfInformationFragment"
+        android:name="com.example.mipersonalidad.BFInformationFragment"
+        tools:layout="@layout/fragment_b_f_information">
+
+        <action
+            android:id="@+id/action_bfInformationFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
     </fragment>
 
     <fragment

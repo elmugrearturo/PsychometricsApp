@@ -1,9 +1,14 @@
+<!-- res/values/themes.xml -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.MiPersonalidad" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <!-- Base application theme -->
+    <style name="Theme.MiPersonalidad" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/darkBlue</item>
+        <item name="colorSecondary">@color/red</item>
+        <item name="android:statusBarColor">@color/darkBlue</item>
+        <item name="android:navigationBarColor">@color/blue</item>
+        <item name="android:windowBackground">@color/white</item>
+        <!--item name="android:fontFamily">@font/roboto</item-->
     </style>
-
-    <style name="Theme.MiPersonalidad" parent="Base.Theme.MiPersonalidad" />
 </resources>

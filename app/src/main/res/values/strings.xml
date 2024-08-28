@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Mi Personalidad</string>
+    <string name="btnBFIInformation">Información sobre los cinco factores</string>
+    <string name="btnBFITest">Responder test</string>
+    <string name="btnBFITestResults">Ver últimos resultados</string>
+    <string name="btnOther">Other</string>
 
     <string name="openness_name">Apertura a la experiencia</string>
     <string name="conscientiousness_name">Responsabilidad</string>
@@ -29,4 +33,6 @@
     <string name="neuroticism_low">Tiendes a ser emocionalmente estable y resistente. Las situaciones estresantes rara vez te desestabilizan, y en general mantienes una actitud tranquila. Aunque esta estabilidad emocional es una fortaleza, está bien expresar tus sentimientos cuando las cosas te afectan.</string>
     <string name="neuroticism_medium">Tienes un temperamento emocional equilibrado. Aunque a veces puedes sentir estrés o ansiedad, en general gestionas bien tus emociones. Esta capacidad para manejar altibajos te ayuda a mantener una perspectiva constante sobre la vida.</string>
     <string name="neuroticism_high">Eres susceptible a experimentar altibajos emocionales con frecuencia. El estrés y la ansiedad pueden muchas veces ser desafiantes para ti, pero esto también significa que estás muy en sintonía con tus emociones. Desarrollar estrategias para manejar el estrés puede ayudarte a mantener el equilibrio emocional.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

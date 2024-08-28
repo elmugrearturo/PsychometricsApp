@@ -50,6 +50,7 @@ class TestSelectionFragment : Fragment() {
         // Clear navigation back stack
         findNavController().popBackStack(R.id.firstFragment, false)
 
+        val informationButton = view.findViewById<Button>(R.id.btnBFIInformation)
         val resultsButton = view.findViewById<Button>(R.id.btnBFITestResults)
 
         val db = Room.databaseBuilder(
@@ -68,6 +69,11 @@ class TestSelectionFragment : Fragment() {
             }
         }
 
+        informationButton.setOnClickListener{
+            // Load BF Information Fragment
+            findNavController().navigate(R.id.action_firstFragment_to_bfInformationFragment)
+        }
+
         // Handle BFI button click
         view.findViewById<Button>(R.id.btnBFITest).setOnClickListener {
             // Load BFI Fragment
@@ -75,7 +81,7 @@ class TestSelectionFragment : Fragment() {
         }
 
         resultsButton.setOnClickListener {
-            // Load BFI Fragment
+            // Load BFI Results Fragment
             findNavController().navigate(R.id.action_firstFragment_to_bfiResultsFragment)
         }
     }
