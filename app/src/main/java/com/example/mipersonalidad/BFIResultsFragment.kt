@@ -8,11 +8,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
 import com.example.mipersonalidad.room.AppDatabase
-import com.example.mipersonalidad.room.BFIDao
 import com.example.mipersonalidad.room.BFIScores
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
@@ -149,12 +147,29 @@ class BFIResultsFragment : Fragment() {
             add(BarEntry(4f, normalizedScores["Neuroticism"]!!))
         }
 
-        val barDataSet = BarDataSet(entries, "Resultados de los Cinco Factores")
+        val colors = listOf(
+            requireContext().getColor(R.color.openness),
+            requireContext().getColor(R.color.conscientiousness),
+            requireContext().getColor(R.color.extraversion),
+            requireContext().getColor(R.color.agreeableness),
+            requireContext().getColor(R.color.neuroticism)
+        )
+
+        val barDataSet = BarDataSet(entries, "Resultados de los Cinco Factores de la Personalidad")
+        barDataSet.colors = colors
+        barDataSet.isHighlightEnabled = false
+
         val barData = BarData(barDataSet)
         barChart.data = barData
 
+        barChart.description.isEnabled = false
+        barChart.setTouchEnabled(false) // Disables all touch interactions
+        barChart.isDragEnabled = false  // Disables dragging
+        barChart.isScaleXEnabled = false
+        barChart.isScaleYEnabled = false
+
         // Customize the chart
-        val labels = listOf("Ae", "Re", "Ex", "Am", "Ne")
+        val labels = listOf("Ap", "Re", "Ex", "Am", "Ne")
         barChart.xAxis.valueFormatter = IndexAxisValueFormatter(labels)
         barChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         barChart.xAxis.granularity = 1f
@@ -171,7 +186,7 @@ class BFIResultsFragment : Fragment() {
     private fun buildNumericReport(results: BFIScores): String {
         val numericReportBuilder = StringBuilder()
 
-        numericReportBuilder.append("Apertura a la experiencia (Ae): ${results.openness/10f}/5.00\n")
+        numericReportBuilder.append("Apertura a la experiencia (Ap): ${results.openness/10f}/5.00\n")
         numericReportBuilder.append("Responsabilidad (Re): ${results.conscientiousness/9f}/5.00\n")
         numericReportBuilder.append("Extraversión (Ex): ${results.extraversion/8f}/5.00\n")
         numericReportBuilder.append("Amabilidad (Am): ${results.agreeableness/9f}/5.00\n")
