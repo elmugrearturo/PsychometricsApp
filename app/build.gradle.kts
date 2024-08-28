@@ -50,7 +50,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.constraintlayout.compose)
+    // implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.androidx.gridlayout)
     implementation(libs.mpandroidchart)
     testImplementation(libs.junit)

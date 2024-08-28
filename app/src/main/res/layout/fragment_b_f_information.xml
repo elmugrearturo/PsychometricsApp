@@ -9,58 +9,119 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/openness_name" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Information banner"
+                android:src="@drawable/information_16_9"
+                android:adjustViewBounds="true"/>
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/openness_explanation" />
+            android:layout_height="wrap_content"
+            android:text="@string/information_title"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/lato_black"
+            android:textSize="22sp"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/conscientiousness_name" />
+            android:layout_height="wrap_content"
+            android:text="@string/information_introduction"
+            android:layout_marginBottom="16dp"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/conscientiousness_explanation" />
+            android:layout_height="wrap_content"
+            android:text="@string/openness_name"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="18sp"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/extraversion_name" />
+            android:layout_height="wrap_content"
+            android:text="@string/openness_explanation"
+            android:layout_marginBottom="16dp" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/extraversion_explanation" />
+            android:layout_height="wrap_content"
+            android:text="@string/conscientiousness_name"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="18sp"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/agreeableness_name" />
+            android:layout_height="wrap_content"
+            android:text="@string/conscientiousness_explanation"
+            android:layout_marginBottom="16dp"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/agreeableness_explanation" />
+            android:layout_height="wrap_content"
+            android:text="@string/extraversion_name"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="18sp"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/neuroticism_name" />
+            android:layout_height="wrap_content"
+            android:text="@string/extraversion_explanation"
+            android:layout_marginBottom="16dp"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/neuroticism_explanation" />
+            android:layout_height="wrap_content"
+            android:text="@string/agreeableness_name"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/agreeableness_explanation"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/neuroticism_name"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/neuroticism_explanation"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bfi_title"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bfi_explanation"
+            android:layout_marginBottom="16dp"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
