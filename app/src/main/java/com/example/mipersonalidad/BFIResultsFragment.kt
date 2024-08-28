@@ -38,6 +38,7 @@ class BFIResultsFragment : Fragment() {
     private var param2: String? = null
 
     private lateinit var barChart : BarChart
+    private lateinit var numericReport : TextView
     private lateinit var textExplanation : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +70,8 @@ class BFIResultsFragment : Fragment() {
         }
 
         barChart = view.findViewById(R.id.bfiBarChart)
-        textExplanation = view.findViewById(R.id.textExplanation)
+        numericReport = view.findViewById(R.id.resultsNumbers)
+        textExplanation = view.findViewById(R.id.resultsReport)
 
         // Initialize the Room database
         val db = Room.databaseBuilder(
@@ -162,19 +164,24 @@ class BFIResultsFragment : Fragment() {
         barChart.invalidate()  // Refresh the chart
 
         // Create a text explanation
-        val explanation = buildExplanation(results, normalizedScores)
-        textExplanation.text = explanation
+        numericReport.text = buildNumericReport(results)
+        textExplanation.text = buildExplanation(normalizedScores)
     }
 
-    private fun buildExplanation(results: BFIScores, normalizedScores:Map<String, Float>): String {
-        val explanationBuilder = StringBuilder()
+    private fun buildNumericReport(results: BFIScores): String {
+        val numericReportBuilder = StringBuilder()
 
-        explanationBuilder.append("Tus resultados:\n\n")
-        explanationBuilder.append("Apertura a la experiencia (Ae): ${results.openness/10f}/5.00\n")
-        explanationBuilder.append("Responsabilidad (Re): ${results.conscientiousness/9f}/5.00\n")
-        explanationBuilder.append("Extraversión (Ex): ${results.extraversion/8f}/5.00\n")
-        explanationBuilder.append("Amabilidad (Am): ${results.agreeableness/9f}/5.00\n")
-        explanationBuilder.append("Neuroticismo (Ne): ${results.neuroticism/8f}/5.00\n\n")
+        numericReportBuilder.append("Apertura a la experiencia (Ae): ${results.openness/10f}/5.00\n")
+        numericReportBuilder.append("Responsabilidad (Re): ${results.conscientiousness/9f}/5.00\n")
+        numericReportBuilder.append("Extraversión (Ex): ${results.extraversion/8f}/5.00\n")
+        numericReportBuilder.append("Amabilidad (Am): ${results.agreeableness/9f}/5.00\n")
+        numericReportBuilder.append("Neuroticismo (Ne): ${results.neuroticism/8f}/5.00\n\n")
+
+        return numericReportBuilder.toString()
+    }
+
+    private fun buildExplanation(normalizedScores:Map<String, Float>): String {
+        val explanationBuilder = StringBuilder()
 
         val openness = normalizedScores["Openness"]!!.toInt()
         val conscientiousness = normalizedScores["Conscientiousness"]!!.toInt()
