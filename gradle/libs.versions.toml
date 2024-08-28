@@ -17,6 +17,7 @@ navigationCompose = "2.7.7"
 gridlayout = "1.0.0"
 
 [libraries]
+androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
