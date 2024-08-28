@@ -13,6 +13,7 @@
             android:backgroundTint="@color/red"
             android:text="@string/btnBFIInformation"
             app:layout_constraintHeight_percent=".25"
+            app:layout_constraintWidth_percent=".99"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,6 +49,7 @@
             android:backgroundTint="@color/blue"
             android:text="@string/btnOther"
             app:layout_constraintHeight_percent=".25"
+            app:layout_constraintWidth_percent=".99"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnBFITestResults"
