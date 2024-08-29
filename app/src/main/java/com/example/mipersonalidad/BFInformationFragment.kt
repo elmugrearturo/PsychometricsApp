@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,6 +40,12 @@ class BFInformationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val referencesTextView = view.findViewById<TextView>(R.id.referencesTextView)
+        var references = getString(R.string.reference1)
+        references = "$references\n\n"
+        references += getString(R.string.reference2)
+        referencesTextView.text = references
 
     }
 

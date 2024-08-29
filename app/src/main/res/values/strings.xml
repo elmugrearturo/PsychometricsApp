@@ -13,6 +13,7 @@
     <string name="agreeableness_name">Amabilidad</string>
     <string name="neuroticism_name">Neuroticismo</string>
     <string name="bfi_title">Medición de la personalidad</string>
+    <string name="references_title">Referencias</string>
 
     <string name="information_introduction">El modelo de los cinco factores de la personalidad, también conocido como el Big Five, es una teoría ampliamente aceptada en psicología que describe cinco dimensiones clave de la personalidad humana: Apertura a la experiencia, Responsabilidad, Extraversión, Amabilidad y Neuroticismo.</string>
 
@@ -22,7 +23,9 @@
     <string name="agreeableness_explanation">Este factor mide la tendencia a ser compasivo, cooperativo y a mantener relaciones interpersonales positivas. Las personas con alta amabilidad son empáticas, confiables y buscan evitar conflictos. Las personas con baja amabilidad pueden ser más competitivas, críticas y enfocadas en sus propios intereses.</string>
     <string name="neuroticism_explanation">Este rasgo evalúa la estabilidad emocional y la tendencia a experimentar emociones negativas como ansiedad, depresión o irritabilidad. Las personas con alto neuroticismo son más propensas a sufrir estrés y tener fluctuaciones emocionales intensas. Las personas con bajo neuroticismo son más emocionalmente estables y tienden a manejar mejor las situaciones estresantes.</string>
     <string name="bfi_explanation">Para conocer la personalidad de un individuo, se suelen utilizar herramientas como el Inventario de los Cinco Grandes (BFI por sus siglas en inglés): un cuestionario diseñado para medir objetivamente cada una de las cinco dimensiones del modelo. Dada su confiabilidad y validez, el BFI se suele utilizar tanto en la investigación como en la práctica psicológica, y es la herramienta usada por esta aplicación.</string>
-
+    <string name="reference1">John, O. P., Donahue, E. M., &amp; Kentle, R. L. (1991). Big five inventory. Journal of personality and social psychology.</string>
+    <string name="reference2">Benet-Martínez, V., &amp; John, O. P. (1998). Los Cinco Grandes across cultures and ethnic groups: Multitrait-multimethod analyses of the Big Five in Spanish and English. Journal of personality and social psychology, 75(3), 729.</string>
+    
     <string name="score_out_of_range">No se pudo determinar el resultado correctamente.</string>
     <string name="openness_low">Tiendes a preferir la rutina y las experiencias familiares. Explorar nuevas ideas o actividades a veces puede ser abrumador para ti. Por ello, puede que te sientas más a gusto siguiendo tradiciones ya establecidas y buscando soluciones prácticas; sin embargo, incluir un par de cosas nuevas en tu día a día podría enriquecer tu vida.</string>
     <string name="openness_medium">Disfrutas de un equilibrio entre la rutina y la novedad. Sientes curiosidad por tener nuevas experiencias, pero también valoras la estructura en tu vida cotidiana. Esta flexibilidad te permite explorar nuevas ideas sin perder tu centro.</string>

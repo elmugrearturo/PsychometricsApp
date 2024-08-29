@@ -123,5 +123,20 @@
             android:text="@string/bfi_explanation"
             android:layout_marginBottom="16dp"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/references_title"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/referencesTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginBottom="16dp"/>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
