@@ -1,4 +1,4 @@
-package com.example.mipersonalidad.room
+package com.arturocuriel.mipersonalidad.room
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert

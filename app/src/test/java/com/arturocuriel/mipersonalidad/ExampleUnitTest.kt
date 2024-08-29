@@ -1,4 +1,4 @@
-package com.example.mipersonalidad
+package com.arturocuriel.mipersonalidad
 
 import org.junit.Test
 

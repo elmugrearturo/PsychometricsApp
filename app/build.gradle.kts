@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mipersonalidad"
+    namespace = "com.arturocuriel.mipersonalidad"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.mipersonalidad"
+        applicationId = "com.arturocuriel.mipersonalidad"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

@@ -1,4 +1,4 @@
-package com.example.mipersonalidad
+package com.arturocuriel.mipersonalidad
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -14,8 +14,8 @@ import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
-import com.example.mipersonalidad.room.AppDatabase
-import com.example.mipersonalidad.room.BFIScores
+import com.arturocuriel.mipersonalidad.room.AppDatabase
+import com.arturocuriel.mipersonalidad.room.BFIScores
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData

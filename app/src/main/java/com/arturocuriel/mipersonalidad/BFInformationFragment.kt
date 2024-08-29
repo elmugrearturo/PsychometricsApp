@@ -1,4 +1,4 @@
-package com.example.mipersonalidad
+package com.arturocuriel.mipersonalidad
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,17 +1,8 @@
-package com.example.mipersonalidad
+package com.arturocuriel.mipersonalidad
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.TextClock
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.compose.rememberNavController
 
 class MainActivity : AppCompatActivity() {
 

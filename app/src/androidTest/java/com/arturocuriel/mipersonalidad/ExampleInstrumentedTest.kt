@@ -1,4 +1,4 @@
-package com.example.mipersonalidad
+package com.arturocuriel.mipersonalidad
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

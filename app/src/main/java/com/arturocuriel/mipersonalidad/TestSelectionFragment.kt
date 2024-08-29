@@ -1,7 +1,5 @@
-package com.example.mipersonalidad
+package com.arturocuriel.mipersonalidad
 
-import android.app.AlertDialog
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +9,7 @@ import android.widget.Button
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
-import com.example.mipersonalidad.room.AppDatabase
+import com.arturocuriel.mipersonalidad.room.AppDatabase
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match

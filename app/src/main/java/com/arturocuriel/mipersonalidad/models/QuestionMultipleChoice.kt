@@ -1,4 +1,4 @@
-package com.example.mipersonalidad.models
+package com.arturocuriel.mipersonalidad.models
 
 open class QuestionMultipleChoice(id: Int, text: String,
                                   val options: List<String>) : Question(id, text){

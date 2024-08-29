@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.example.mipersonalidad.TestSelectionFragment"
+        android:name="com.arturocuriel.mipersonalidad.TestSelectionFragment"
         tools:layout="@layout/fragment_test_selection">
 
         <action
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/bfInformationFragment"
-        android:name="com.example.mipersonalidad.BFInformationFragment"
+        android:name="com.arturocuriel.mipersonalidad.BFInformationFragment"
         tools:layout="@layout/fragment_b_f_information">
 
         <action
@@ -38,7 +38,7 @@
 
     <fragment
         android:id="@+id/bfiFragment"
-        android:name="com.example.mipersonalidad.BFIFragment"
+        android:name="com.arturocuriel.mipersonalidad.BFIFragment"
         tools:layout="@layout/fragment_b_f_i">
 
         <action
@@ -48,7 +48,7 @@
 
     <fragment
         android:id="@+id/bfiResultsFragment"
-        android:name="com.example.mipersonalidad.BFIResultsFragment"
+        android:name="com.arturocuriel.mipersonalidad.BFIResultsFragment"
         tools:layout="@layout/fragment_b_f_i_results">
 
         <!-- Action to navigate back to the firstFragment -->
@@ -59,7 +59,7 @@
 
     <fragment
         android:id="@+id/researchProjectsFragment"
-        android:name="com.example.mipersonalidad.ResearchProjectsFragment"
+        android:name="com.arturocuriel.mipersonalidad.ResearchProjectsFragment"
         tools:layout="@layout/fragment_research_projects">
 
         <action

@@ -1,4 +1,4 @@
-package com.example.mipersonalidad.room
+package com.arturocuriel.mipersonalidad.room
 import androidx.room.Database
 import androidx.room.RoomDatabase
 

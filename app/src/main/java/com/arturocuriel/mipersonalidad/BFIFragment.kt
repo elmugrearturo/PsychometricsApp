@@ -1,8 +1,7 @@
-package com.example.mipersonalidad
+package com.arturocuriel.mipersonalidad
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,14 +13,13 @@ import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
-import com.example.mipersonalidad.models.QuestionBFI
-import com.example.mipersonalidad.room.AppDatabase
-import com.example.mipersonalidad.room.BFIScores
+import com.arturocuriel.mipersonalidad.models.QuestionBFI
+import com.arturocuriel.mipersonalidad.room.AppDatabase
+import com.arturocuriel.mipersonalidad.room.BFIScores
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.coroutines.launch
 
 import org.json.JSONObject
-import org.json.JSONArray
 import java.io.IOException
 
 

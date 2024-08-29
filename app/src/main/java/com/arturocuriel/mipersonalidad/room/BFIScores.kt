@@ -1,4 +1,4 @@
-package com.example.mipersonalidad.room
+package com.arturocuriel.mipersonalidad.room
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
