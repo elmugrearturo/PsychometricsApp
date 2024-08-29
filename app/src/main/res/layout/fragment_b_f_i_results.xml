@@ -47,6 +47,16 @@
             android:layout_height="300dp"
             android:layout_marginBottom="16dp" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/downloadChartButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descargar o compartir imagen"
+            android:textColor="@color/darkgrayblue"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginBottom="16dp"
+            />
+
         <TextView
             android:id="@+id/resultsReportTitle"
             android:layout_width="match_parent"

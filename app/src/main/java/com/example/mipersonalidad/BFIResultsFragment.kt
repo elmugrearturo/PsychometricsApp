@@ -1,5 +1,8 @@
 package com.example.mipersonalidad
 
+import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.addCallback
+import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
@@ -18,7 +22,11 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,6 +79,8 @@ class BFIResultsFragment : Fragment() {
         numericReport = view.findViewById(R.id.resultsNumbers)
         textExplanation = view.findViewById(R.id.resultsReport)
 
+        val downloadChartButton = view.findViewById<MaterialButton>(R.id.downloadChartButton)
+
         // Initialize the Room database
         val db = Room.databaseBuilder(
             requireContext(),
@@ -84,6 +94,69 @@ class BFIResultsFragment : Fragment() {
             }
         }
 
+        downloadChartButton.setOnClickListener{
+            val chartBitmap = barChart.chartBitmap
+            shareChart(chartBitmap)
+        }
+    }
+
+    private fun shareChart(chartBitmap: Bitmap){
+        // Clear cache from previous sharing
+        clearCache()
+
+        // Save the Bitmap to a temporary file in cache directory
+        val cachePath = File(requireContext().cacheDir, "charts")
+        cachePath.mkdirs() // Make sure the directory exists
+        val filename = "${System.currentTimeMillis()}.png"
+        val file = File(cachePath, filename)
+        try {
+            val fileOutputStream = FileOutputStream(file)
+            chartBitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream) // Save bitmap to PNG format
+            fileOutputStream.flush()
+            fileOutputStream.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+            return
+        }
+
+        // Get the URI for the file using FileProvider
+        val fileUri: Uri = FileProvider.getUriForFile(
+            requireContext(),
+            "${requireContext().packageName}.fileprovider",
+            file
+        )
+
+        // Create and launch the share intent
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_STREAM, fileUri)
+            type = "image/png"
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // Grant temporary permission for other apps to read the file
+        }
+
+        // Start the share intent
+        requireContext().startActivity(Intent.createChooser(shareIntent, "Compartir resultados"))
+    }
+
+    fun clearCache() {
+        // Get the cache directory
+        val cacheDir = requireContext().cacheDir
+
+        // Recursively delete all files in the cache directory
+        cacheDir?.let {
+            deleteRecursive(it)
+        }
+    }
+
+    // Helper function to delete files and directories recursively
+    private fun deleteRecursive(fileOrDirectory: File) {
+        if (fileOrDirectory.isDirectory) {
+            fileOrDirectory.listFiles()?.forEach { child ->
+                deleteRecursive(child)
+            }
+        }
+        // Delete the file or directory
+        fileOrDirectory.delete()
     }
 
     private fun normalizeScores(inputScores : BFIScores) : Map<String, Int> {
