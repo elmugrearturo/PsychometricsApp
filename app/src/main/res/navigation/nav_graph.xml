@@ -20,6 +20,10 @@
         <action
             android:id="@+id/action_firstFragment_to_bfiFragment"
             app:destination="@id/bfiFragment" />
+
+        <action
+            android:id="@+id/action_firstFragment_to_researchProjectsFragment"
+            app:destination="@id/researchProjectsFragment" />
     </fragment>
 
     <fragment
@@ -50,6 +54,16 @@
         <!-- Action to navigate back to the firstFragment -->
         <action
             android:id="@+id/action_bfiResultsFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/researchProjectsFragment"
+        android:name="com.example.mipersonalidad.ResearchProjectsFragment"
+        tools:layout="@layout/fragment_research_projects">
+
+        <action
+            android:id="@+id/action_researchProjectsFragment_to_firstFragment"
             app:destination="@id/firstFragment" />
     </fragment>
 </navigation>

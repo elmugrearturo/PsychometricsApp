@@ -25,7 +25,7 @@
     <string name="bfi_explanation">Para conocer la personalidad de un individuo, se suelen utilizar herramientas como el Inventario de los Cinco Grandes (BFI por sus siglas en inglés): un cuestionario diseñado para medir objetivamente cada una de las cinco dimensiones del modelo. Dada su confiabilidad y validez, el BFI se suele utilizar tanto en la investigación como en la práctica psicológica, y es la herramienta usada por esta aplicación.</string>
     <string name="reference1">John, O. P., Donahue, E. M., &amp; Kentle, R. L. (1991). Big five inventory. Journal of personality and social psychology.</string>
     <string name="reference2">Benet-Martínez, V., &amp; John, O. P. (1998). Los Cinco Grandes across cultures and ethnic groups: Multitrait-multimethod analyses of the Big Five in Spanish and English. Journal of personality and social psychology, 75(3), 729.</string>
-    
+
     <string name="score_out_of_range">No se pudo determinar el resultado correctamente.</string>
     <string name="openness_low">Tiendes a preferir la rutina y las experiencias familiares. Explorar nuevas ideas o actividades a veces puede ser abrumador para ti. Por ello, puede que te sientas más a gusto siguiendo tradiciones ya establecidas y buscando soluciones prácticas; sin embargo, incluir un par de cosas nuevas en tu día a día podría enriquecer tu vida.</string>
     <string name="openness_medium">Disfrutas de un equilibrio entre la rutina y la novedad. Sientes curiosidad por tener nuevas experiencias, pero también valoras la estructura en tu vida cotidiana. Esta flexibilidad te permite explorar nuevas ideas sin perder tu centro.</string>

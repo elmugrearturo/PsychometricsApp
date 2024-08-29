@@ -95,14 +95,7 @@ class TestSelectionFragment : Fragment() {
         }
 
         researchButton.setOnClickListener{
-            val alertDialogBuilder = AlertDialog.Builder(requireContext())
-            with(alertDialogBuilder)
-            {
-                setTitle("Proyectos de Investigación")
-                setMessage("Por el momento no tenemos ningún proyecto activo.\n\nGracias por tu interés.")
-                setNeutralButton("Aceptar", null)
-                show()
-            }
+            findNavController().navigate(R.id.action_firstFragment_to_researchProjectsFragment)
         }
     }
 
