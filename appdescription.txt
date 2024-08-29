@@ -1,0 +1,13 @@
+Mi Personalidad
+
+Analiza tu personalidad mediante el Inventario de los Cinco Grandes.
+
+"Mi Personalidad" es una herramienta sencilla, diseñada para ayudarte a conocerte mejor a través del modelo de los Cinco Grandes Factores de Personalidad. El modelo de los Cinco Grandes es un enfoque científico y basado en evidencias empíricas que identifica cinco dimensiones fundamentales de la personalidad humana: Apertura a la Experiencia, Responsabilidad, Extraversión, Amabilidad y Neuroticismo. Estos cinco factores son esenciales para entender cómo las personas piensan, sienten y se comportan en diversas situaciones.
+
+Para medir cada factor, "Mi personalidad" utiliza el Inventario de los Cinco Grandes (BFI por sus siglas en inglés): un instrumento estándar ampliamente reconocido en psicometría. La aplicación te guiará a través de cada una de las preguntas del BFI, las cuales están diseñadas para medir tus niveles en cada uno de los cinco grandes factores. 
+
+Una vez que completes el cuestionario, recibirás un reporte detallado con tus puntuaciones en cada factor y lo qué significan para ti. ¿Eres extrovertido o prefieres la introspección? ¿Tienes una mente abierta para nuevas experiencias o prefieres lo familiar y lo seguro? Todo esto lo puedes descubrir con "Mi personalidad".
+
+Finalmente, es importante señalar que esta aplicación fue creada con fines académicos y no comerciales. Para los usuarios que quieran apoyarnos, existe la opción de participar en proyectos de investigación orientados a la creación y validación de pruebas psicométricas en poblaciones hispanohablantes. La participación consiste en responder a uno o varios instrumentos psicométricos en estudio, a través de la misma aplicación, y enviar los resultados a nuestro servidor seguro junto con algunos datos poblacionales (edad, género, lugar de origen, etc).
+
+Es importante reiterar que la participación en proyectos de investigación no es de ninguna forma obligatoria, y es independiente del cálculo de los valores del BFI. Ningún dato será enviado a nuestro servidor sin la confirmación expresa del usuario dentro de la aplicación. Además, la no participación no afecta en modo alguno la generación y consulta del reporte de resultados del BFI.
