@@ -3,6 +3,7 @@
     <string name="btnBFIInformation">Información sobre los cinco factores</string>
     <string name="btnBFITest">Responder test</string>
     <string name="btnBFITestResults">Ver últimos resultados</string>
+    <string name="btnResearch">Apoyar en proyectos de investigación</string>
     <string name="btnOther">Other</string>
 
     <string name="information_title">El modelo de los cinco factores de la personalidad</string>

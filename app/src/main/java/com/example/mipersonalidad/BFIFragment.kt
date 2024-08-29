@@ -17,6 +17,7 @@ import androidx.room.Room
 import com.example.mipersonalidad.models.QuestionBFI
 import com.example.mipersonalidad.room.AppDatabase
 import com.example.mipersonalidad.room.BFIScores
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.coroutines.launch
 
 import org.json.JSONObject
@@ -76,6 +77,7 @@ class BFIFragment : Fragment() {
         val previousButton = view.findViewById<Button>(R.id.previousQuestionButton)
         val nextButton = view.findViewById<Button>(R.id.nextQuestionButton)
         val radioGroup = view.findViewById<RadioGroup>(R.id.answerOptions)
+        val progressIndicator = view.findViewById<LinearProgressIndicator>(R.id.progressIndicator)
 
         // Enable next on selection
         radioGroup.setOnCheckedChangeListener { _, _ ->
@@ -92,6 +94,7 @@ class BFIFragment : Fragment() {
 
             if (currentQuestionIndex < questionList.size - 1) {
                 currentQuestionIndex++
+                progressIndicator.progress++
                 displayQuestion(currentQuestionIndex)
             } else {
                 // Submit the test and show results
@@ -123,6 +126,7 @@ class BFIFragment : Fragment() {
         previousButton.setOnClickListener {
             if (currentQuestionIndex > 0) {
                 currentQuestionIndex--
+                progressIndicator.progress--
                 displayQuestion(currentQuestionIndex)
             }
         }

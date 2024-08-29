@@ -186,11 +186,16 @@ class BFIResultsFragment : Fragment() {
     private fun buildNumericReport(results: BFIScores): String {
         val numericReportBuilder = StringBuilder()
 
-        numericReportBuilder.append("Apertura a la experiencia (Ap): ${results.openness/10f}/5.00\n")
-        numericReportBuilder.append("Responsabilidad (Re): ${results.conscientiousness/9f}/5.00\n")
-        numericReportBuilder.append("Extraversión (Ex): ${results.extraversion/8f}/5.00\n")
-        numericReportBuilder.append("Amabilidad (Am): ${results.agreeableness/9f}/5.00\n")
-        numericReportBuilder.append("Neuroticismo (Ne): ${results.neuroticism/8f}/5.00\n\n")
+        numericReportBuilder.append(
+            "Apertura a la experiencia (Ap): %.2f/5.00\n".format(results.openness/10f))
+        numericReportBuilder.append(
+            "Responsabilidad (Re): %.2f/5.00\n".format(results.conscientiousness/9f))
+        numericReportBuilder.append(
+            "Extraversión (Ex): %.2f/5.00\n".format(results.extraversion/8f))
+        numericReportBuilder.append(
+            "Amabilidad (Am): %.2f/5.00\n".format(results.agreeableness/9f))
+        numericReportBuilder.append(
+            "Neuroticismo (Ne): %.2f/5.00\n\n".format(results.neuroticism/8f))
 
         return numericReportBuilder.toString()
     }

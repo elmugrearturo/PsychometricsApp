@@ -1,5 +1,6 @@
 package com.example.mipersonalidad
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -52,6 +53,7 @@ class TestSelectionFragment : Fragment() {
 
         val informationButton = view.findViewById<Button>(R.id.btnBFIInformation)
         val resultsButton = view.findViewById<Button>(R.id.btnBFITestResults)
+        val researchButton = view.findViewById<Button>(R.id.btnResearch)
 
         val db = Room.databaseBuilder(
             requireContext(),
@@ -61,10 +63,17 @@ class TestSelectionFragment : Fragment() {
         lifecycleScope.launch {
             val rowCount = db.bfiDao().getRowCount()
             if(rowCount == 0){
+                // Research and results button are inactive
+                // until having results
                 resultsButton.isEnabled = false
+                researchButton.isEnabled = false
             }else{
                 if(!resultsButton.isEnabled){
                     resultsButton.isEnabled = true
+                }
+
+                if(!researchButton.isEnabled){
+                    researchButton.isEnabled = true
                 }
             }
         }
@@ -83,6 +92,17 @@ class TestSelectionFragment : Fragment() {
         resultsButton.setOnClickListener {
             // Load BFI Results Fragment
             findNavController().navigate(R.id.action_firstFragment_to_bfiResultsFragment)
+        }
+
+        researchButton.setOnClickListener{
+            val alertDialogBuilder = AlertDialog.Builder(requireContext())
+            with(alertDialogBuilder)
+            {
+                setTitle("Proyectos de Investigación")
+                setMessage("Por el momento no tenemos ningún proyecto activo.\n\nGracias por tu interés.")
+                setNeutralButton("Aceptar", null)
+                show()
+            }
         }
     }
 
