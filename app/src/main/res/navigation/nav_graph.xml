@@ -58,6 +58,16 @@
     </fragment>
 
     <fragment
+        android:id="@+id/personalDataFragment"
+        android:name="com.arturocuriel.mipersonalidad.PersonalDataFragment"
+        tools:layout="@layout/fragment_personal_data">
+
+        <action
+            android:id="@+id/action_personalDataFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/researchProjectsFragment"
         android:name="com.arturocuriel.mipersonalidad.ResearchProjectsFragment"
         tools:layout="@layout/fragment_research_projects">

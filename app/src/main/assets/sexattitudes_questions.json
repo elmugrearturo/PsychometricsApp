@@ -1,0 +1,388 @@
+{
+	"instructions" : {
+		"es" : "Las siguientes expresiones te describen con más o menos precisión. Elige un número para cada una de ellas (1-5), indicando así hasta qué punto estás de acuerdo o en desacuerdo en cómo te describen.\n\nMe veo a mí mismo(a) como alguien que...\n"
+	},
+	"answers": [
+		{
+			"id" : "1",
+			"text" : {
+				"es": "(1) Muy de acuerdo",
+				"en" : ""
+			}
+		},
+		{
+			"id": "2",
+			"text": {
+				"es": "(2) Ligeramente de acuerdo",
+				"en" : ""
+			}
+		},
+		{
+			"id": "3",
+			"text": {
+				"es": "(3) Ni de acuerdo ni en desacuerdo",
+				"en" : ""
+			}
+		},
+		{
+			"id": "4",
+			"text": {
+				"es": "(4) Ligeramente en desacuerdo",
+				"en" : ""
+			}
+		},
+		{
+			"id": "5",
+			"text": {
+				"es": "(5) Muy en desacuerdo",
+				"en" : ""
+			}
+		}
+	],
+	"questions" : [
+		{
+			"id": "1",
+			"text": {
+				"es": "",
+				"en" : "I do not need to be committed to a person to have sex with him/her."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "2",
+			"text": {
+				"es": "",
+				"en" : "Casual sex is acceptable."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "3",
+			"text": {
+				"es": "",
+				"en" : "I would like to have sex with many partners."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "4",
+			"text": {
+				"es": "",
+				"en" : "One-night stands are sometimes very enjoyable."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "5",
+			"text": {
+				"es": "",
+				"en" : "It is okay to have ongoing sexual relationships with more than one person at a time."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "6",
+			"text": {
+				"es": "",
+				"en" : "It is okay to manipulate someone into having sex as long as no future promises are made."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "7",
+			"text": {
+				"es": "",
+				"en" : "Sex as a simple exchange of favors is okay if both people agree to it."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "8",
+			"text": {
+				"es": "",
+				"en" : "The best sex is with no strings attached."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "9",
+			"text": {
+				"es": "",
+				"en" : "Life would have fewer problems if people could have sex more freely."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "10",
+			"text": {
+				"es": "",
+				"en" : "It is possible to enjoy sex with a person and not like that person very much."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "11",
+			"text": {
+				"es": "",
+				"en" : "Sex is more fun with someone you don't love."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "12",
+			"text": {
+				"es": "",
+				"en" : "It is all right to pressure someone into having sex."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "13",
+			"text": {
+				"es": "",
+				"en" : "Extensive premarital sexual experience is fine."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "14",
+			"text": {
+				"es": "",
+				"en" : "Extramarital affairs are all right as long as one's partner doesn't know about them."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "15",
+			"text": {
+				"es": "",
+				"en" : "Sex for its own sake is perfectly all right."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "16",
+			"text": {
+				"es": "",
+				"en" : "I would feel comfortable having intercourse with my partner in the presence of other people."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "17",
+			"text": {
+				"es": "",
+				"en" : "Prostitution is acceptable."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "18",
+			"text": {
+				"es": "",
+				"en" : "It is okay for sex to be just good physical release."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "19",
+			"text": {
+				"es": "",
+				"en" : "Sex without love is meaningless."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "20",
+			"text": {
+				"es": "",
+				"en" : "People should at least be friends before they have sex together."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "21",
+			"text": {
+				"es": "",
+				"en" : "In order for sex to be good, it must also be meaningful."
+			},
+			"trait" : "Permissiveness"
+		},
+		{
+			"id": "22",
+			"text": {
+				"es": "",
+				"en" : "Birth control is part of responsible sexuality."
+			},
+			"trait" : "Sexual Practices"
+		},
+		{
+			"id": "23",
+			"text": {
+				"es": "",
+				"en" : "A woman should share responsibility for birth control."
+			},
+			"trait" : "Sexual Practices"
+		},
+		{
+			"id": "24",
+			"text": {
+				"es": "",
+				"en" : "A man should share responsibility for birth control."
+			},
+			"trait" : "Sexual Practices"
+		},
+		{
+			"id": "25",
+			"text": {
+				"es": "",
+				"en" : "Sex education is important for young people."
+			},
+			"trait" : "Sexual Practices"
+		},
+		{
+			"id": "26",
+			"text": {
+				"es": "",
+				"en" : "Using 'sex toys' during lovemaking is acceptable."
+			},
+			"trait" : "Sexual Practices"
+		},
+		{
+			"id": "27",
+			"text": {
+				"es": "",
+				"en" : "Masturbation is all right."
+			},
+			"trait" : "Sexual Practices"
+		},
+		{
+			"id": "28",
+			"text": {
+				"es": "",
+				"en" : "Masturbating one's partner during intercourse can increase the pleasure of sex."
+			},
+			"trait" : "Sexual Practices"
+		},
+		{
+			"id": "29",
+			"text": {
+				"es": "",
+				"en" : "Sex gets better as a relationship progresses."
+			},
+			"trait" : "Communion"
+		},
+		{
+			"id": "30",
+			"text": {
+				"es": "",
+				"en" : "Sex is the closest form of communication between two people."
+			},
+			"trait" : "Communion"
+		},
+		{
+			"id": "31",
+			"text": {
+				"es": "",
+				"en" : "A sexual encounter between two people deeply in love is the ultimate human interaction."
+			},
+			"trait" : "Communion"
+		},
+		{
+			"id": "32",
+			"text": {
+				"es": "",
+				"en" : "Orgasm is the greatest experience in the world."
+			},
+			"trait" : "Communion"
+		},
+		{
+			"id": "33",
+			"text": {
+				"es": "",
+				"en" : "At its best, sex seems to be the merging of two souls."
+			},
+			"trait" : "Communion"
+		},
+		{
+			"id": "34",
+			"text": {
+				"es": "",
+				"en" : "Sex is a very important part of life."
+			},
+			"trait" : "Communion"
+		},
+		{
+			"id": "35",
+			"text": {
+				"es": "",
+				"en" : "Sex is usually an intensive, almost overwhelming experience."
+			},
+			"trait" : "Communion"
+		},
+		{
+			"id": "36",
+			"text": {
+				"es": "",
+				"en" : "During sexual intercourse, intense awareness of the partner is the best frame of mind."
+			},
+			"trait" : "Communion"
+		},
+		{
+			"id": "37",
+			"text": {
+				"es": "",
+				"en" : "Sex is fundamentally good. "
+			},
+			"trait" : "Communion"
+		},
+		{
+			"id": "38",
+			"text": {
+				"es": "",
+				"en" : "Sex is best when you let yourself go and focus on your own pleasure."
+			},
+			"trait" : "Instrumentality"
+		},
+		{
+			"id": "39",
+			"text": {
+				"es": "",
+				"en" : "Sex is primarily the taking of pleasure from another person."
+			},
+			"trait" : "Instrumentality"
+		},
+		{
+			"id": "40",
+			"text": {
+				"es": "",
+				"en" : "The main purpose of sex is to enjoy oneself."
+			},
+			"trait" : "Instrumentality"
+		},
+		{
+			"id": "41",
+			"text": {
+				"es": "",
+				"en" : "Sex is primarily physical."
+			},
+			"trait" : "Instrumentality"
+		},
+		{
+			"id": "42",
+			"text": {
+				"es": "",
+				"en" : "Sex is primarily a bodily function, like eating."
+			},
+			"trait" : "Instrumentality"
+		},
+		{
+			"id": "43",
+			"text": {
+				"es": "",
+				"en" : "Sex is mostly a game between males and females."
+			},
+			"trait" : "Instrumentality"
+		}
+	]
+}

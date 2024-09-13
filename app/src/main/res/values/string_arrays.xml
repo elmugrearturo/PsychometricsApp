@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nationalities_array">
+        <item>México</item>
+        <item>Colombia</item>
+        <item>Argentina</item>
+        <item>España</item>
+        <item>Estados Unidos</item>
+        <item>Peru</item>
+        <item>Chile</item>
+    </string-array>
+    <string-array name="gender_array">
+        <item>Femenino</item>
+        <item>Masculino</item>
+        <item>Otro</item>
+    </string-array>
+</resources>
