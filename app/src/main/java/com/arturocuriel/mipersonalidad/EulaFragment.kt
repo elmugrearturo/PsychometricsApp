@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import java.util.UUID
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,8 +76,13 @@ class EulaFragment : Fragment() {
         val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
         with(sharedPref.edit()) {
             putBoolean("LICENSE_ACCEPTED", true)
+            putString("UUID", generateUUID()) // Generate a UUID for sending results
             apply()
         }
+    }
+
+    private fun generateUUID(): String {
+        return UUID.randomUUID().toString()
     }
 
     private fun navigateToNextScreen() {

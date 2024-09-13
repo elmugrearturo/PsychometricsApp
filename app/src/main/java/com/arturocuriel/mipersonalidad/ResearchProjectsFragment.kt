@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.cardview.widget.CardView
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,6 +43,15 @@ class ResearchProjectsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Override back button
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            //val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            //val navController = navHostFragment.navController
+
+            // Navigate to the first fragment
+            findNavController().navigate(R.id.action_researchProjectsFragment_to_firstFragment)
+        }
 
         val cardView = view.findViewById<CardView>(R.id.card1)
 

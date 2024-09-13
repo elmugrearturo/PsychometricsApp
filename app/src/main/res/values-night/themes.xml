@@ -1,16 +1,16 @@
-<!-- res/values/themes.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme -->
     <style name="Theme.MiPersonalidad" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Customize your theme here -->
         <item name="colorPrimary">@color/grayblue</item>
         <item name="colorPrimaryVariant">@color/darkBlue</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/red</item>
-        <item name="android:textColor">@color/grayblue</item>
+        <item name="android:backgroundTint">@color/darkBlue</item>
         <item name="android:statusBarColor">@color/darkBlue</item>
-        <item name="android:navigationBarColor">@color/black</item>
+        <item name="android:navigationBarColor">@color/grayblue</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="android:fontFamily">@font/lato_regular</item>
+        <item name="android:buttonTint">@color/blue</item>
     </style>
 </resources>

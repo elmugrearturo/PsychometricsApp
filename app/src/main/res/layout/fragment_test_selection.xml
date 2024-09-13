@@ -11,6 +11,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:backgroundTint="@color/blue"
+            android:textColor="@color/white"
             android:text="@string/btnBFIInformation"
             app:icon="@drawable/book_icon"
             app:iconSize="48dp"
@@ -28,6 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:backgroundTint="@color/red"
+            android:textColor="@color/white"
             android:text="@string/btnBFITest"
             app:icon="@drawable/test_respond_icon"
             app:iconSize="48dp"
@@ -74,41 +76,4 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnBFITestResults"
             />
-
-        <!--com.google.android.material.card.MaterialCardView
-        android:id="@+id/btnInfo2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_columnSpan="1"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        app:layout_gravity="fill_horizontal"
-        app:layout_rowWeight="1"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/your_icon"
-                android:contentDescription="@string/icon_desc"
-                android:tint="@color/yourIconColor"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Other2"
-                android:textAppearance="?attr/textAppearanceButton"
-                android:gravity="center"/>
-
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>
