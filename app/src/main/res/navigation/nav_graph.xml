@@ -24,6 +24,10 @@
         <action
             android:id="@+id/action_firstFragment_to_researchProjectsFragment"
             app:destination="@id/researchProjectsFragment" />
+
+        <action
+            android:id="@+id/action_firstFragment_to_eulaFragment"
+            app:destination="@id/eulaFragment" />
     </fragment>
 
     <fragment
@@ -75,5 +79,18 @@
         <action
             android:id="@+id/action_researchProjectsFragment_to_firstFragment"
             app:destination="@id/firstFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/eulaFragment"
+        android:name="com.arturocuriel.mipersonalidad.EulaFragment"
+        tools:layout="@layout/fragment_eula">
+
+        <action
+            android:id="@+id/action_eulaFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+        <action
+            android:id="@+id/action_eulaFragment_to_researchProjectsFragment"
+            app:destination="@id/researchProjectsFragment" />
     </fragment>
 </navigation>

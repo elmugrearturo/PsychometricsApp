@@ -35,19 +35,23 @@ La Aplicación se proporciona "tal cual" y "según disponibilidad", sin ninguna 
 8. Limitación de Responsabilidad
 
 En la máxima medida permitida por la ley aplicable, el Desarrollador no será responsable por ningún daño directo, indirecto, incidental, especial, consecuente o punitivo que surja del uso o la imposibilidad de usar la Aplicación.
+    
+9. Aclaración sobre Interpretación de Resultados
 
-9. Modificaciones al Acuerdo
+El Desarrollador no es un profesional de la salud mental. Los resultados proporcionados por la Aplicación se basan en el Inventario de los Cinco Grandes (BFI) y otras pruebas psicométricas experimentales. Como tal, no deben interpretarse como diagnósticos o recomendaciones profesionales. Cualquier interpretación o uso de los resultados debe realizarse bajo la supervisión de un profesional de la salud mental capacitado. La Aplicación está diseñada con fines educativos e investigativos y no sustituye el consejo o tratamiento de un especialista en salud mental.
+
+10. Modificaciones al Acuerdo
 
 El Desarrollador se reserva el derecho de modificar este Acuerdo en cualquier momento. Si se realizan cambios materiales, se le notificará por los medios apropiados, y su uso continuado de la Aplicación constituirá la aceptación de dichos cambios.
 
-10. Terminación
+11. Terminación
 
 Este Acuerdo se mantendrá en vigor hasta que sea terminado por cualquiera de las partes. Usted puede terminar este Acuerdo eliminando la Aplicación de su dispositivo. El Desarrollador puede terminar este Acuerdo en cualquier momento, con o sin causa, mediante notificación.
 
-11. Ley Aplicable
+12. Ley Aplicable
 
 Este Acuerdo se regirá e interpretará de acuerdo con las leyes de los Estados Unidos Mexicanos, sin tener en cuenta sus disposiciones sobre conflicto de leyes.
 
-12. Contacto
+13. Contacto
 
 Si tiene alguna pregunta sobre este Acuerdo, por favor contacte con Arturo Tlacaélel Curiel Díaz en mipersonalidad@arturocuriel.com .

@@ -1,5 +1,6 @@
 package com.arturocuriel.mipersonalidad
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -93,7 +94,15 @@ class TestSelectionFragment : Fragment() {
         }
 
         researchButton.setOnClickListener{
-            findNavController().navigate(R.id.action_firstFragment_to_researchProjectsFragment)
+            // Check if EULA has been accepted
+            val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+            val licenseAccepted = sharedPref.getBoolean("LICENSE_ACCEPTED", false)
+
+            if (!licenseAccepted) {
+                findNavController().navigate(R.id.action_firstFragment_to_eulaFragment)
+            }else {
+                findNavController().navigate(R.id.action_firstFragment_to_researchProjectsFragment)
+            }
         }
     }
 
