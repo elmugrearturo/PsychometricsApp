@@ -26,15 +26,66 @@
             android:adjustViewBounds="true"/>
     </androidx.cardview.widget.CardView>
 
-    <Spinner
+    <TextView
+        android:id="@+id/countrySpinnerLegend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/nationalities_array"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/personalDataHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Lugar de residencia"/>
+
+    <Spinner
+        android:id="@+id/countrySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:entries="@array/nationalities_array"
+        app:layout_constraintTop_toBottomOf="@id/countrySpinnerLegend"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp">
     </Spinner>
+
+    <TextView
+        android:id="@+id/genderSpinnerLegend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/countrySpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Género"/>
+
+    <Spinner
+        android:id="@+id/genderSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:entries="@array/gender_array"
+        app:layout_constraintTop_toBottomOf="@id/genderSpinnerLegend"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/agePickerLegend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/genderSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Edad"/>
+
+    <NumberPicker
+        android:id="@+id/agePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/agePickerLegend"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/registerData"

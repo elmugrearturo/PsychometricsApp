@@ -1,6 +1,7 @@
 package com.arturocuriel.mipersonalidad
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -44,6 +45,8 @@ class ResearchProjectsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         // Override back button
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             //val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -64,6 +67,15 @@ class ResearchProjectsFragment : Fragment() {
                 setNeutralButton("Aceptar", null)
                 show()
             }
+        }
+    }
+
+    private fun resendIfNecessary() {
+        val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+        val usedDataSent = sharedPref.getBoolean("USER_DATA_SENT", false)
+
+        if (!usedDataSent) {
+
         }
     }
 

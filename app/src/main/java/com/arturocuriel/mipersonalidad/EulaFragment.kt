@@ -58,7 +58,7 @@ class EulaFragment : Fragment() {
         btnAccept.setOnClickListener {
             if (cbAccept.isChecked) {
                 saveLicenseAccepted()
-                navigateToNextScreen() // Navigate to the app's research list
+                navigateToNextScreen() // Navigate to the app's personal data form
             } else {
                 Toast.makeText(context,
                     "Por favor acepte el contrato de licencia para continuar.",
@@ -76,6 +76,7 @@ class EulaFragment : Fragment() {
         val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
         with(sharedPref.edit()) {
             putBoolean("LICENSE_ACCEPTED", true)
+            putBoolean("HAS_PERSONAL_DATA", false)
             putString("UUID", generateUUID()) // Generate a UUID for sending results
             apply()
         }
@@ -86,7 +87,7 @@ class EulaFragment : Fragment() {
     }
 
     private fun navigateToNextScreen() {
-        findNavController().navigate(R.id.action_eulaFragment_to_researchProjectsFragment)
+        findNavController().navigate(R.id.action_eulaFragment_to_personalDataFragment)
     }
 
     private fun navigateToPreviousScreen() {

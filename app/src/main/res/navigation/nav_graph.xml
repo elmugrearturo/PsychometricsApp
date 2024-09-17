@@ -28,6 +28,10 @@
         <action
             android:id="@+id/action_firstFragment_to_eulaFragment"
             app:destination="@id/eulaFragment" />
+
+        <action
+            android:id="@+id/action_firstFragment_to_personalDataFragment"
+            app:destination="@id/personalDataFragment" />
     </fragment>
 
     <fragment
@@ -67,6 +71,10 @@
         tools:layout="@layout/fragment_personal_data">
 
         <action
+            android:id="@+id/action_personalDataFragment_to_researchProjectsFragment"
+            app:destination="@id/researchProjectsFragment" />
+
+        <action
             android:id="@+id/action_personalDataFragment_to_firstFragment"
             app:destination="@id/firstFragment" />
     </fragment>
@@ -92,5 +100,8 @@
         <action
             android:id="@+id/action_eulaFragment_to_researchProjectsFragment"
             app:destination="@id/researchProjectsFragment" />
+        <action
+            android:id="@+id/action_eulaFragment_to_personalDataFragment"
+            app:destination="@id/personalDataFragment" />
     </fragment>
 </navigation>

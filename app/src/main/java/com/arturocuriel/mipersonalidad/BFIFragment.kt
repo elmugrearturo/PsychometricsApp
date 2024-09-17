@@ -16,6 +16,7 @@ import androidx.room.Room
 import com.arturocuriel.mipersonalidad.models.QuestionBFI
 import com.arturocuriel.mipersonalidad.room.AppDatabase
 import com.arturocuriel.mipersonalidad.room.BFIScores
+import com.arturocuriel.mipersonalidad.room.BFItems
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.coroutines.launch
 
@@ -113,6 +114,19 @@ class BFIFragment : Fragment() {
                         timestamp = System.currentTimeMillis()
                         )
                     db.bfiDao().insertScore(bfiScores)
+
+                    // Clean previous scores
+                    db.bfiItemsDao().emptyItemResponses()
+
+                    // Insert new individual scores
+                    for (question in questionList){
+                        val responseItem = BFItems(
+                            itemNumber = question.id,
+                            response = question.selection!! + 1,
+                            timestamp = System.currentTimeMillis()
+                        )
+                        db.bfiItemsDao().insertItemResponse(responseItem)
+                    }
                 }
 
                 // Load ResultsFragment

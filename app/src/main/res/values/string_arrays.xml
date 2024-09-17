@@ -12,6 +12,10 @@
     <string-array name="gender_array">
         <item>Femenino</item>
         <item>Masculino</item>
-        <item>Otro</item>
+        <item>Transgenero femenino</item>
+        <item>Transgenero masculino</item>
+        <item>No binario</item>
+        <item>Sin género</item>
+        <item>Prefiero no especificar</item>
     </string-array>
 </resources>

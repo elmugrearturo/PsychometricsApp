@@ -2,7 +2,9 @@ package com.arturocuriel.mipersonalidad.room
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
-@Database(entities = [BFIScores::class], version = 1)
+@Database(entities = [BFIScores::class, BFItems::class, Users::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun bfiDao() : BFIDao
+    abstract fun bfiItemsDao() : BFIItemsDao
+    abstract fun usersDao() : UsersDao
 }

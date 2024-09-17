@@ -94,14 +94,20 @@ class TestSelectionFragment : Fragment() {
         }
 
         researchButton.setOnClickListener{
-            // Check if EULA has been accepted
             val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
             val licenseAccepted = sharedPref.getBoolean("LICENSE_ACCEPTED", false)
+            val hasRegisteredUserData = sharedPref.getBoolean("REGISTERED_USER_DATA", false)
 
+            // Check if EULA has been accepted
             if (!licenseAccepted) {
                 findNavController().navigate(R.id.action_firstFragment_to_eulaFragment)
             }else {
-                findNavController().navigate(R.id.action_firstFragment_to_researchProjectsFragment)
+                // Check if User has already set their population variables
+                if (!hasRegisteredUserData){
+                    findNavController().navigate(R.id.action_firstFragment_to_personalDataFragment)
+                }else{
+                    findNavController().navigate(R.id.action_firstFragment_to_researchProjectsFragment)
+                }
             }
         }
     }
