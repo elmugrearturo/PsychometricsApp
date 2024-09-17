@@ -9,7 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
+import com.arturocuriel.mipersonalidad.models.ServerCommunication
+import com.arturocuriel.mipersonalidad.models.UserBFIPayload
+import com.arturocuriel.mipersonalidad.room.AppDatabase
+import com.google.gson.Gson
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,17 +52,16 @@ class ResearchProjectsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         // Override back button
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            //val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-            //val navController = navHostFragment.navController
-
             // Navigate to the first fragment
             findNavController().navigate(R.id.action_researchProjectsFragment_to_firstFragment)
         }
 
+        // Check if we need to send info
+        resendUserDataIfNecessary()
+
+        // Configure project list
         val cardView = view.findViewById<CardView>(R.id.card1)
 
         cardView.setOnClickListener{
@@ -70,12 +76,47 @@ class ResearchProjectsFragment : Fragment() {
         }
     }
 
-    private fun resendIfNecessary() {
+    private fun resendUserDataIfNecessary() {
         val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
         val usedDataSent = sharedPref.getBoolean("USER_DATA_SENT", false)
 
         if (!usedDataSent) {
+            lifecycleScope.launch {
+                // Prepare user and BFI data for sending to server
+                val db = Room.databaseBuilder(
+                    requireContext(),
+                    AppDatabase::class.java, "app-database"
+                ).build()
 
+                val userData = db.usersDao().getLastInsertedUser()
+                val bfiScores = db.bfiDao().getLastInsertedScore()
+                val bfiItems = db.bfiItemsDao().getItemResponses()
+
+                val uBFIPayload = UserBFIPayload(
+                    users = userData!!,
+                    bigFiveItems = bfiItems,
+                    bigFiveResults = bfiScores!!
+                )
+
+                // Gson object
+                val gson = Gson()
+                val uBFIPayloadJson = gson.toJson(uBFIPayload)
+
+                // Send to server
+                val comm = ServerCommunication(
+                    getString(R.string.testServerDomain),
+                    getString(R.string.testbfiEndpoint),
+                    getString(R.string.testSha56hash),
+                    uBFIPayloadJson
+                )
+
+                val success = comm.sendData(secure = false, callback = { success ->
+                    with(sharedPref.edit()) {
+                        putBoolean("USER_DATA_SENT", success)
+                        apply()
+                    }
+                })
+            }
         }
     }
 

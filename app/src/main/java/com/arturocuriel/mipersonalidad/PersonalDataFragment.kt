@@ -145,6 +145,7 @@ class PersonalDataFragment : Fragment() {
         // Set a flag for User Data
         with(sharedPref.edit()){
             putBoolean("REGISTERED_USER_DATA", true)
+            putBoolean("USER_DATA_SENT", false)
             apply()
         }
 
@@ -157,41 +158,8 @@ class PersonalDataFragment : Fragment() {
 
             // Insert User Data locally
             db.usersDao().insertUser(userData)
-
-            val bfiScores = db.bfiDao().getLastInsertedScore()
-            val bfiItems = db.bfiItemsDao().getItemResponses()
-
-            val uBFIPayload = UserBFIPayload(
-                users = userData,
-                bigFiveItems = bfiItems,
-                bigFiveResults = bfiScores!!
-            )
-
-            // Gson object
-            val gson = Gson()
-            val uBFIPayloadJson = gson.toJson(uBFIPayload)
-
-            // Send to server
-            val comm = ServerCommunication(getString(R.string.testServerDomain),
-                getString(R.string.testbfiEndpoint),
-                getString(R.string.testSha56hash),
-                uBFIPayloadJson
-                )
-
-            val success = comm.sendData(secure = false)
-
-            if(success) {
-                with(sharedPref.edit()) {
-                    putBoolean("USER_DATA_SENT", true)
-                    apply()
-                }
-            } else {
-                with(sharedPref.edit()){
-                    putBoolean("USER_DATA_SENT", false)
-                    apply()
-                }
-            }
         }
+
         // Navigate to projects list
         findNavController().navigate(R.id.action_personalDataFragment_to_researchProjectsFragment)
     }

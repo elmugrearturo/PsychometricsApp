@@ -1,6 +1,5 @@
 package com.arturocuriel.mipersonalidad.models
 
-import com.arturocuriel.mipersonalidad.R
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.CertificatePinner
@@ -61,29 +60,24 @@ class ServerCommunication(val serverDomain : String,
         return request
     }
 
-    public fun sendData(secure : Boolean) : Boolean {
-        var okHttpClient : OkHttpClient? = null
-        if (!secure) {
-            okHttpClient = nonSecureCommunicationClient()
+    public fun sendData(secure : Boolean, callback: (Boolean) -> Unit) {
+        val okHttpClient = if (!secure) {
+            nonSecureCommunicationClient()
         } else {
-            okHttpClient = secureCommunicationClient()
+            secureCommunicationClient()
         }
 
         val request = createRequest()
-        var success : Boolean? = null
-
         okHttpClient.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                // Server response not ok
-                success = false
+                // Handle failure
+                callback(false)
             }
 
             override fun onResponse(call: Call, response: Response) {
-                // Server response ok
-                success = true
+                // Handle success
+                callback(true)
             }
         })
-
-        return success!!
     }
 }
