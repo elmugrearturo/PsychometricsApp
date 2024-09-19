@@ -91,6 +91,10 @@
         <action
             android:id="@+id/action_researchProjectsFragment_to_sacksFragment"
             app:destination="@id/sacksFragment" />
+
+        <action
+            android:id="@+id/action_researchProjectsFragment_to_sacksResultsFragment"
+            app:destination="@id/sacksResultsFragment" />
     </fragment>
 
     <fragment

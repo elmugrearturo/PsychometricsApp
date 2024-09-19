@@ -61,13 +61,21 @@ class ResearchProjectsFragment : Fragment() {
 
         // Check if we need to send info
         resendUserDataIfNecessary()
-        // sendSacksItemsIfNecessary()
+        sendSacksItemsIfNecessary()
 
         // Configure project list
         val cardView = view.findViewById<CardView>(R.id.card1)
 
         cardView.setOnClickListener{
-            findNavController().navigate(R.id.action_researchProjectsFragment_to_sacksFragment)
+            val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+            val sacksItemsSent = sharedPref.getBoolean("SACKS_ITEMS_SENT", false)
+
+            if (sacksItemsSent) {
+                findNavController().navigate(R.id.action_researchProjectsFragment_to_sacksResultsFragment)
+            } else {
+                findNavController().navigate(R.id.action_researchProjectsFragment_to_sacksFragment)
+            }
+
         }
     }
 

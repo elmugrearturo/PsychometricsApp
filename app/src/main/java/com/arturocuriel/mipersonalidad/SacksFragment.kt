@@ -68,7 +68,7 @@ class SacksFragment : Fragment() {
         questionList = loadQuestionsFromAssets()
 
         // Display instructions
-        view.findViewById<TextView>(R.id.instructionsText)?.text = testInstructions
+        view.findViewById<TextView>(R.id.sacksInstructionsText)?.text = testInstructions
 
         // Display the first question or handle the questions as needed
         displayQuestion(currentQuestionIndex)
