@@ -87,6 +87,10 @@
         <action
             android:id="@+id/action_researchProjectsFragment_to_firstFragment"
             app:destination="@id/firstFragment" />
+
+        <action
+            android:id="@+id/action_researchProjectsFragment_to_sacksFragment"
+            app:destination="@id/sacksFragment" />
     </fragment>
 
     <fragment
@@ -104,4 +108,31 @@
             android:id="@+id/action_eulaFragment_to_personalDataFragment"
             app:destination="@id/personalDataFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/sacksFragment"
+        android:name="com.arturocuriel.mipersonalidad.SacksFragment"
+        tools:layout="@layout/fragment_sacks">
+
+        <action
+            android:id="@+id/action_sacksFragment_to_researchProjectsFragment"
+            app:destination="@id/researchProjectsFragment" />
+
+        <action
+            android:id="@+id/action_sacksFragment_to_sacksResultsFragment"
+            app:destination="@id/sacksResultsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/sacksResultsFragment"
+        android:name="com.arturocuriel.mipersonalidad.SacksResultsFragment"
+        tools:layout="@layout/fragment_sacks_results">
+
+        <action
+            android:id="@+id/action_sacksResultsFragment_to_researchProjectsFragment"
+            app:destination="@id/researchProjectsFragment" />
+
+    </fragment>
+
 </navigation>
