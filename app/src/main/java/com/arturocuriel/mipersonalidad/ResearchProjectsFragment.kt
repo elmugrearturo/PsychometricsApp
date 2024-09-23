@@ -68,9 +68,9 @@ class ResearchProjectsFragment : Fragment() {
 
         cardView1.setOnClickListener{
             val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
-            val sacksItemsSent = sharedPref.getBoolean("SACKS_ITEMS_SENT", false)
+            val sacksItemsReady = sharedPref.getBoolean("SACKS_ITEMS_READY", false)
 
-            if (sacksItemsSent) {
+            if (sacksItemsReady) {
                 findNavController().navigate(R.id.action_researchProjectsFragment_to_sacksResultsFragment)
             } else {
                 findNavController().navigate(R.id.action_researchProjectsFragment_to_sacksFragment)
@@ -80,9 +80,9 @@ class ResearchProjectsFragment : Fragment() {
 
         cardView2.setOnClickListener{
             val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
-            val dassItemsSent = sharedPref.getBoolean("DASS_ITEMS_SENT", false)
+            val dassItemsReady = sharedPref.getBoolean("DASS_ITEMS_READY", false)
 
-            if (dassItemsSent) {
+            if (dassItemsReady) {
                 findNavController().navigate(R.id.action_researchProjectsFragment_to_dassResultsFragment)
             } else {
                 findNavController().navigate(R.id.action_researchProjectsFragment_to_dassFragment)

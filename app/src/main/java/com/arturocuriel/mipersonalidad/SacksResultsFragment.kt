@@ -153,9 +153,9 @@ class SacksResultsFragment : Fragment() {
 
                 var contents = ""
                 for (response in sacksResponses){
-                    val question = questionList[response.id - 1].text
+                    val question = questionList[response.itemNumber - 1].text
                     val answer = response.response.lowercase()
-                    val questionNumber = response.id.toString()
+                    val questionNumber = response.itemNumber.toString()
                     contents += "$questionNumber. $question $answer\n"
                 }
 
@@ -214,7 +214,7 @@ class SacksResultsFragment : Fragment() {
                     sacksPayloadJson
                 )
 
-                val success = comm.sendData(secure = false, callback = { success ->
+                comm.sendData(secure = false, callback = { success ->
                     with(sharedPref.edit()) {
                         putBoolean("SACKS_ITEMS_SENT", success)
                         apply()

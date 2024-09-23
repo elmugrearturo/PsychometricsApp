@@ -60,7 +60,7 @@ class ServerCommunication(val serverDomain : String,
         return request
     }
 
-    public fun sendData(secure : Boolean, callback: (Boolean) -> Unit) {
+    fun sendData(secure : Boolean, callback: (Boolean) -> Unit) {
         val okHttpClient = if (!secure) {
             nonSecureCommunicationClient()
         } else {

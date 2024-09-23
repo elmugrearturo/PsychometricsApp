@@ -1,6 +1,7 @@
 package com.arturocuriel.mipersonalidad
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -124,6 +125,13 @@ class DASSFragment : Fragment() {
                             timestamp = System.currentTimeMillis()
                         )
                         db.dassItemsDao().insertItemResponse(responseItem)
+                    }
+
+                    val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+
+                    with(sharedPref.edit()){
+                        putBoolean("DASS_ITEMS_READY", true)
+                        apply()
                     }
                 }
 
