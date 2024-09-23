@@ -229,6 +229,7 @@ class BFIResultsFragment : Fragment() {
         )
 
         val barDataSet = BarDataSet(entries, "Resultados de los Cinco Factores de la Personalidad")
+        barDataSet.valueTextColor = requireContext().getColor(R.color.chartTextColor)
         barDataSet.colors = colors
         barDataSet.isHighlightEnabled = false
 

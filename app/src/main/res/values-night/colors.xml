@@ -20,9 +20,9 @@
     <color name="conscientiousness">#18d3b6</color>
     <color name="extraversion">#ffcc00</color>
     <color name="agreeableness">#fe2a7f</color>
-    <color name="neuroticism">#073b4c</color>
+    <color name="neuroticism">#629cf3</color>
     <color name="disabledTextColor">#9E9E9E</color>
     <color name="enabledTextColor">#FFFFFF</color>
-    <color name="chartTextColor">#FF000000</color>
-    <color name="chartBackgroundColor">#FFFFFFFF</color>
+    <color name="chartTextColor">#FFFFFFFF</color>
+    <color name="chartBackgroundColor">#FF000000</color>
 </resources>

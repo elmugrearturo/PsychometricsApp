@@ -61,7 +61,6 @@ class ResearchProjectsFragment : Fragment() {
 
         // Check if we need to send info
         resendUserDataIfNecessary()
-        sendSacksItemsIfNecessary()
 
         // Configure project list
         val cardView = view.findViewById<CardView>(R.id.card1)
@@ -116,49 +115,6 @@ class ResearchProjectsFragment : Fragment() {
                 val success = comm.sendData(secure = false, callback = { success ->
                     with(sharedPref.edit()) {
                         putBoolean("USER_DATA_SENT", success)
-                        apply()
-                    }
-                })
-            }
-        }
-    }
-
-    private fun sendSacksItemsIfNecessary() {
-        val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
-        val uuid = sharedPref.getString("UUID", "")
-        val sacksItemsSent = sharedPref.getBoolean("SACKS_ITEMS_SENT", false)
-        val sacksItemsReady = sharedPref.getBoolean("SACKS_ITEMS_READY", false)
-
-        if (!sacksItemsSent and sacksItemsReady) {
-            lifecycleScope.launch {
-                // Prepare user and BFI data for sending to server
-                val db = Room.databaseBuilder(
-                    requireContext(),
-                    AppDatabase::class.java, "app-database"
-                ).build()
-
-                val sacksItems = db.sacksDao().getItemResponses()
-
-                val sacksPayload = SacksPayload(
-                    uuid = uuid!!,
-                    sacksItems = sacksItems,
-                )
-
-                // Gson object
-                val gson = Gson()
-                val sacksPayloadJson = gson.toJson(sacksPayload)
-
-                // Send to server
-                val comm = ServerCommunication(
-                    getString(R.string.testServerDomain),
-                    getString(R.string.testSacksEndpoint),
-                    getString(R.string.testSha56hash),
-                    sacksPayloadJson
-                )
-
-                val success = comm.sendData(secure = false, callback = { success ->
-                    with(sharedPref.edit()) {
-                        putBoolean("SACKS_ITEMS_SENT", success)
                         apply()
                     }
                 })
