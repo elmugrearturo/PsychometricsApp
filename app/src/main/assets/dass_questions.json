@@ -1,0 +1,180 @@
+{
+  "instructions" : {
+    "es" : "Por favor lee las siguientes afirmaciones. \n Elige un número para cada una de ellas (1-4), indicando en qué grado te ha ocurrido esta afirmación durante la semana pasada.\n"
+  },
+  "answers": [
+    {
+      "id" : "0",
+      "text" : {
+        "es": "(1) No me ha ocurrido\n"
+      }
+    },
+    {
+      "id": "1",
+      "text": {
+        "es": "(2) Me ha ocurrido un poco, o durante parte del tiempo\n"
+      }
+    },
+    {
+      "id": "2",
+      "text": {
+        "es": "(3) Me ha ocurrido bastante, o durante buena parte del tiempo\n"
+      }
+    },
+    {
+      "id": "3",
+      "text": {
+        "es": "(4) Me ha ocurrido mucho, o la mayor parte del tiempo\n"
+      }
+    }
+  ],
+  "questions" : [
+    {
+      "id": "1",
+      "text": {
+        "es": "Me ha costado mucho descargar la tensión"
+      },
+      "trait" : "Stress"
+    },
+    {
+      "id": "2",
+      "text": {
+        "es": "Me di cuenta que tenía la boca seca"
+      },
+      "trait" : "Anxiety"
+    },
+    {
+      "id": "3",
+      "text": {
+        "es": "No podía sentir ningún sentimiento positivo"
+      },
+      "trait" : "Depression"
+    },
+    {
+      "id": "4",
+      "text": {
+        "es": "Se me hizo difícil respirar"
+      },
+      "trait" : "Anxiety"
+    },
+    {
+      "id": "5",
+      "text": {
+        "es": "Se me hizo difícil tomar la iniciativa para hacer cosas"
+      },
+      "trait" : "Depression"
+    },
+    {
+      "id": "6",
+      "text": {
+        "es": "Reaccioné exageradamente en ciertas situaciones"
+      },
+      "trait" : "Stress"
+    },
+    {
+      "id": "7",
+      "text": {
+        "es": "Sentí que mis manos temblaban"
+      },
+      "trait" : "Anxiety"
+    },
+    {
+      "id": "8",
+      "text": {
+        "es": "He sentido que estaba gastando una gran cantidad de energía"
+      },
+      "trait" : "Stress"
+    },
+    {
+      "id": "9",
+      "text": {
+        "es": "Estaba preocupado por situaciones en las cuales podía tener pánico o en las que podría hacer el ridículo"
+      },
+      "trait" : "Anxiety"
+    },
+    {
+      "id": "10",
+      "text": {
+        "es": "He sentido que no había nada que me ilusionara"
+      },
+      "trait" : "Depression"
+    },
+    {
+      "id": "11",
+      "text": {
+        "es": "Me he sentido inquieto"
+      },
+      "trait" : "Stress"
+    },
+    {
+      "id": "12",
+      "text": {
+        "es": "Se me hizo difícil relajarme"
+      },
+      "trait" : "Stress"
+    },
+    {
+      "id": "13",
+      "text": {
+        "es": "Me sentí triste y deprimido"
+      },
+      "trait" : "Depression"
+    },
+    {
+      "id": "14",
+      "text": {
+        "es": "No toleré nada que no me permitiera continuar con lo que estaba haciendo…."
+      },
+      "trait" : "Stress"
+    },
+    {
+      "id": "15",
+      "text": {
+        "es": "Sentí que estaba al punto de pánico"
+      },
+      "trait" : "Anxiety"
+    },
+    {
+      "id": "16",
+      "text": {
+        "es": "No me pude entusiasmar por nada"
+      },
+      "trait" : "Depression"
+    },
+    {
+      "id": "17",
+      "text": {
+        "es": "Sentí que valía muy poco como persona"
+      },
+      "trait" : "Depression"
+    },
+    {
+      "id": "18",
+      "text": {
+        "es": "He tendido a sentirme enfadado con facilidad"
+      },
+      "trait" : "Stress"
+    },
+    {
+      "id": "19",
+      "text": {
+        "es": "Sentí los latidos de mi corazón a pesar de no haber hecho ningún esfuerzo físico"
+      },
+      "trait" : "Anxiety"
+    },
+    {
+      "id": "20",
+      "text": {
+        "es": "Tuve miedo sin razón"
+      },
+      "trait" : "Anxiety"
+    },
+    {
+      "id": "21",
+      "text": {
+        "es": "Sentí que la vida no tenía ningún sentido"
+      },
+      "trait" : "Depression"
+    }
+  ]
+}

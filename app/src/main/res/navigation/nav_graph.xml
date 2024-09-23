@@ -95,6 +95,14 @@
         <action
             android:id="@+id/action_researchProjectsFragment_to_sacksResultsFragment"
             app:destination="@id/sacksResultsFragment" />
+
+        <action
+            android:id="@+id/action_researchProjectsFragment_to_dassFragment"
+            app:destination="@id/dassFragment" />
+
+        <action
+            android:id="@+id/action_researchProjectsFragment_to_dassResultsFragment"
+            app:destination="@id/dassResultsFragment" />
     </fragment>
 
     <fragment
@@ -135,6 +143,32 @@
 
         <action
             android:id="@+id/action_sacksResultsFragment_to_researchProjectsFragment"
+            app:destination="@id/researchProjectsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/dassFragment"
+        android:name="com.arturocuriel.mipersonalidad.DASSFragment"
+        tools:layout="@layout/fragment_dass">
+
+        <action
+            android:id="@+id/action_dassFragment_to_researchProjectsFragment"
+            app:destination="@id/researchProjectsFragment" />
+
+        <action
+            android:id="@+id/action_dassFragment_to_dassResultsFragment"
+            app:destination="@id/dassResultsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/dassResultsFragment"
+        android:name="com.arturocuriel.mipersonalidad.DASSResultsFragment"
+        tools:layout="@layout/fragment_dass_results">
+
+        <action
+            android:id="@+id/action_dassResultsFragment_to_researchProjectsFragment"
             app:destination="@id/researchProjectsFragment" />
 
     </fragment>

@@ -63,9 +63,10 @@ class ResearchProjectsFragment : Fragment() {
         resendUserDataIfNecessary()
 
         // Configure project list
-        val cardView = view.findViewById<CardView>(R.id.card1)
+        val cardView1 = view.findViewById<CardView>(R.id.card1)
+        val cardView2 = view.findViewById<CardView>(R.id.card2)
 
-        cardView.setOnClickListener{
+        cardView1.setOnClickListener{
             val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
             val sacksItemsSent = sharedPref.getBoolean("SACKS_ITEMS_SENT", false)
 
@@ -75,6 +76,17 @@ class ResearchProjectsFragment : Fragment() {
                 findNavController().navigate(R.id.action_researchProjectsFragment_to_sacksFragment)
             }
 
+        }
+
+        cardView2.setOnClickListener{
+            val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+            val dassItemsSent = sharedPref.getBoolean("DASS_ITEMS_SENT", false)
+
+            if (dassItemsSent) {
+                findNavController().navigate(R.id.action_researchProjectsFragment_to_dassResultsFragment)
+            } else {
+                findNavController().navigate(R.id.action_researchProjectsFragment_to_dassFragment)
+            }
         }
     }
 
