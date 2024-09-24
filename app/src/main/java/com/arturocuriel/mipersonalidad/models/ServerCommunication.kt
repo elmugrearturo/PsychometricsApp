@@ -76,7 +76,11 @@ class ServerCommunication(val serverDomain : String,
 
             override fun onResponse(call: Call, response: Response) {
                 // Handle success
-                callback(true)
+                if (response.code == 200) {
+                    callback(true)
+                } else {
+                    callback(false)
+                }
             }
         })
     }

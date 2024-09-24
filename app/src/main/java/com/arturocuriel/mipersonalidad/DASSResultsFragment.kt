@@ -1,10 +1,22 @@
 package com.arturocuriel.mipersonalidad
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.activity.addCallback
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.room.Room
+import com.arturocuriel.mipersonalidad.models.DASSPayload
+import com.arturocuriel.mipersonalidad.models.SacksPayload
+import com.arturocuriel.mipersonalidad.models.ServerCommunication
+import com.arturocuriel.mipersonalidad.room.AppDatabase
+import com.google.gson.Gson
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,6 +47,65 @@ class DASSResultsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_dass_results, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Check if we need to save info
+        sendDASSItemsIfNecessary()
+
+        // Override back button
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            // Navigate to the research projects fragment
+            findNavController().navigate(R.id.action_dassResultsFragment_to_researchProjectsFragment)
+        }
+
+    }
+
+    private fun sendDASSItemsIfNecessary() {
+        val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+        val uuid = sharedPref.getString("UUID", "")
+        val sacksItemsSent = sharedPref.getBoolean("DASS_ITEMS_SENT", false)
+        val sacksItemsReady = sharedPref.getBoolean("DASS_ITEMS_READY", false)
+
+        if (!sacksItemsSent and sacksItemsReady) {
+            lifecycleScope.launch {
+                // Prepare user and BFI data for sending to server
+                val db = Room.databaseBuilder(
+                    requireContext(),
+                    AppDatabase::class.java, "app-database"
+                ).build()
+
+                val dassItems = db.dassItemsDao().getItemResponses()
+                val dassScores = db.dassDao().getLastInsertedScore()
+
+                val dassPayload = DASSPayload(
+                    uuid = uuid!!,
+                    dassItems = dassItems,
+                    dassResults = dassScores!!
+                )
+
+                // Gson object
+                val gson = Gson()
+                val dassPayloadJson = gson.toJson(dassPayload)
+
+                // Send to server
+                val comm = ServerCommunication(
+                    getString(R.string.testServerDomain),
+                    getString(R.string.testDASSEndpoint),
+                    getString(R.string.testSha56hash),
+                    dassPayloadJson
+                )
+
+                comm.sendData(secure = false, callback = { success ->
+                    with(sharedPref.edit()) {
+                        putBoolean("DASS_ITEMS_SENT", success)
+                        apply()
+                    }
+                })
+            }
+        }
     }
 
     companion object {
