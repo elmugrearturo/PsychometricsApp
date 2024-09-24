@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -15,6 +16,15 @@ import com.arturocuriel.mipersonalidad.models.DASSPayload
 import com.arturocuriel.mipersonalidad.models.SacksPayload
 import com.arturocuriel.mipersonalidad.models.ServerCommunication
 import com.arturocuriel.mipersonalidad.room.AppDatabase
+import com.arturocuriel.mipersonalidad.room.BFIScores
+import com.arturocuriel.mipersonalidad.room.DASSScores
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.google.android.material.button.MaterialButton
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 
@@ -32,6 +42,9 @@ class DASSResultsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var numericReport : TextView
+    private lateinit var textExplanation : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +74,73 @@ class DASSResultsFragment : Fragment() {
             findNavController().navigate(R.id.action_dassResultsFragment_to_researchProjectsFragment)
         }
 
+        numericReport = view.findViewById(R.id.dassResultsNumbers)
+        textExplanation = view.findViewById(R.id.dassResultsReport)
+
+        // Initialize the Room database
+        val db = Room.databaseBuilder(
+            requireContext(),
+            AppDatabase::class.java, "app-database"
+        ).build()
+
+        lifecycleScope.launch {
+            val dassScores = db.dassDao().getLastInsertedScore()
+            dassScores?.let {
+                displayResults(it)
+            }
+        }
+    }
+
+    private fun displayResults(results: DASSScores) {
+
+        val numericReportBuilder = StringBuilder()
+
+        numericReportBuilder.append(
+            "Depresión: %d/21\n".format(results.depression))
+        numericReportBuilder.append(
+            "Ansiedad: %d/21\n".format(results.anxiety))
+        numericReportBuilder.append(
+            "Estrés: %d/21\n".format(results.stress))
+
+        val explanationBuilder = StringBuilder()
+
+        explanationBuilder.append(getDepressionFeedback(results.depression) + "\n\n")
+        explanationBuilder.append(getAnxietyFeedback(results.anxiety) + "\n\n")
+        explanationBuilder.append(getStressFeedback(results.stress) + "\n\n")
+
+        // Create a text explanation
+        numericReport.text = numericReportBuilder.toString()
+        textExplanation.text = explanationBuilder.toString()
+    }
+
+    private fun getDepressionFeedback(score: Int): String {
+        return when (score) {
+            in 0..4 -> getString(R.string.depression_none)
+            in 5..6 -> getString(R.string.depression_low)
+            in 7..10 -> getString(R.string.depression_medium)
+            in 11..13 -> getString(R.string.depression_high)
+            else -> getString(R.string.depression_extreme)
+        }
+    }
+
+    private fun getAnxietyFeedback(score: Int): String {
+        return when (score) {
+            in 0..3 -> getString(R.string.anxiety_none)
+            in 4..4 -> getString(R.string.anxiety_low)
+            in 5..7 -> getString(R.string.anxiety_medium)
+            in 8..9 -> getString(R.string.anxiety_high)
+            else -> getString(R.string.anxiety_extreme)
+        }
+    }
+
+    private fun getStressFeedback(score: Int): String {
+        return when (score) {
+            in 0..7 -> getString(R.string.stress_none)
+            in 8..9 -> getString(R.string.stress_low)
+            in 10..12 -> getString(R.string.stress_medium)
+            in 13..16 -> getString(R.string.stress_high)
+            else -> getString(R.string.stress_extreme)
+        }
     }
 
     private fun sendDASSItemsIfNecessary() {

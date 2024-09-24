@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="depression_none">No tienes signos de depresión.</string>
+    <string name="depression_low">Tienes signos de depresión leve.</string>
+    <string name="depression_medium">Tienes signos de depresion moderada, por favor visita a un especialista de la salud mental.</string>
+    <string name="depression_high">Tienes signos de depresión alta, por favor visita a un especialista de la salud mental.</string>
+    <string name="depression_extreme">Tienes signos de depresión extrema, por favor visita a un especialista de la salud mental.</string>
+    <string name="anxiety_none">No tienes signos de ansiedad.</string>
+    <string name="anxiety_low">Tienes signos de ansiedad leve.</string>
+    <string name="anxiety_medium">Tienes signos de ansiedad moderada, por favor visita a un especialista de la salud mental.</string>
+    <string name="anxiety_high">Tienes signos de ansiedad alta, por favor visita a un especialista de la salud mental.</string>
+    <string name="anxiety_extreme">Tienes signos de ansiedad extrema, por favor visita a un especialista de la salud mental.</string>
+    <string name="stress_none">No tienes signos de estrés.</string>
+    <string name="stress_low">Tienes signos de estrés leve.</string>
+    <string name="stress_medium">Tienes signos de estrés moderado, por favor visita a un especialista de la salud mental.</string>
+    <string name="stress_high">Tienes signos de estrés alto, por favor visita a un especialista de la salud mental.</string>
+    <string name="stress_extreme">Tienes signos de estrés extremo, por favor visita a un especialista de la salud mental.</string>
+</resources>
