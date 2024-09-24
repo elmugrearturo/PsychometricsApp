@@ -146,12 +146,12 @@ class DASSResultsFragment : Fragment() {
     private fun sendDASSItemsIfNecessary() {
         val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
         val uuid = sharedPref.getString("UUID", "")
-        val sacksItemsSent = sharedPref.getBoolean("DASS_ITEMS_SENT", false)
-        val sacksItemsReady = sharedPref.getBoolean("DASS_ITEMS_READY", false)
+        val dassItemsSent = sharedPref.getBoolean("DASS_ITEMS_SENT", false)
+        val dassItemsReady = sharedPref.getBoolean("DASS_ITEMS_READY", false)
 
-        if (!sacksItemsSent and sacksItemsReady) {
+        if (!dassItemsSent and dassItemsReady) {
             lifecycleScope.launch {
-                // Prepare user and BFI data for sending to server
+                // Prepare DASS data for sending to server
                 val db = Room.databaseBuilder(
                     requireContext(),
                     AppDatabase::class.java, "app-database"
@@ -172,9 +172,9 @@ class DASSResultsFragment : Fragment() {
 
                 // Send to server
                 val comm = ServerCommunication(
-                    getString(R.string.testServerDomain),
-                    getString(R.string.testDASSEndpoint),
-                    getString(R.string.testSha56hash),
+                    getString(R.string.serverDomain),
+                    getString(R.string.dassEndpoint),
+                    getString(R.string.sha56hash),
                     dassPayloadJson
                 )
 

@@ -208,9 +208,9 @@ class SacksResultsFragment : Fragment() {
 
                 // Send to server
                 val comm = ServerCommunication(
-                    getString(R.string.testServerDomain),
-                    getString(R.string.testSacksEndpoint),
-                    getString(R.string.testSha56hash),
+                    getString(R.string.serverDomain),
+                    getString(R.string.sacksEndpoint),
+                    getString(R.string.sha56hash),
                     sacksPayloadJson
                 )
 

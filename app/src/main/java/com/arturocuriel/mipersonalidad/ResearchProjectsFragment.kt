@@ -118,13 +118,13 @@ class ResearchProjectsFragment : Fragment() {
 
                 // Send to server
                 val comm = ServerCommunication(
-                    getString(R.string.testServerDomain),
-                    getString(R.string.testbfiEndpoint),
-                    getString(R.string.testSha56hash),
+                    getString(R.string.serverDomain),
+                    getString(R.string.bfiEndpoint),
+                    getString(R.string.sha56hash),
                     uBFIPayloadJson
                 )
 
-                val success = comm.sendData(secure = false, callback = { success ->
+                comm.sendData(secure = false, callback = { success ->
                     with(sharedPref.edit()) {
                         putBoolean("USER_DATA_SENT", success)
                         apply()

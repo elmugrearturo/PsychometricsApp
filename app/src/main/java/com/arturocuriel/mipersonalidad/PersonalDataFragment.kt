@@ -142,13 +142,6 @@ class PersonalDataFragment : Fragment() {
             timestamp = System.currentTimeMillis()
         )
 
-        // Set a flag for User Data
-        with(sharedPref.edit()){
-            putBoolean("REGISTERED_USER_DATA", true)
-            putBoolean("USER_DATA_SENT", false)
-            apply()
-        }
-
         lifecycleScope.launch {
             // Prepare user and BFI data for sending to server
             val db = Room.databaseBuilder(
@@ -158,6 +151,42 @@ class PersonalDataFragment : Fragment() {
 
             // Insert User Data locally
             db.usersDao().insertUser(userData)
+
+            // Load BFI data
+            val bfiScores = db.bfiDao().getLastInsertedScore()
+            val bfiItems = db.bfiItemsDao().getItemResponses()
+
+            val uBFIPayload = UserBFIPayload(
+                    users = userData,
+                    bigFiveItems = bfiItems,
+                    bigFiveResults = bfiScores!!
+                )
+
+            // Gson object
+            val gson = Gson()
+            val uBFIPayloadJson = gson.toJson(uBFIPayload)
+
+            // Send to server
+            val comm = ServerCommunication(
+                getString(R.string.serverDomain),
+                getString(R.string.bfiEndpoint),
+                getString(R.string.sha56hash),
+                uBFIPayloadJson
+            )
+
+            comm.sendData(secure = false, callback = { success ->
+                // Set a flag for User Data
+                with(sharedPref.edit()) {
+                    putBoolean("USER_DATA_SENT", success)
+                    apply()
+                }
+            })
+        }
+
+        // Signal that the view has finished it's job
+        with(sharedPref.edit()) {
+            putBoolean("REGISTERED_USER_DATA", true)
+            apply()
         }
 
         // Navigate to projects list

@@ -18,11 +18,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.room.Room
 import com.arturocuriel.mipersonalidad.models.QuestionBFI
 import com.arturocuriel.mipersonalidad.models.QuestionOpen
+import com.arturocuriel.mipersonalidad.models.SacksPayload
+import com.arturocuriel.mipersonalidad.models.ServerCommunication
 import com.arturocuriel.mipersonalidad.room.AppDatabase
 import com.arturocuriel.mipersonalidad.room.BFIScores
 import com.arturocuriel.mipersonalidad.room.BFItems
 import com.arturocuriel.mipersonalidad.room.SacksItems
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.io.IOException
@@ -108,6 +111,8 @@ class SacksFragment : Fragment() {
                 progressIndicator.progress++
                 displayQuestion(currentQuestionIndex)
             } else {
+                val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+
                 // Submit the test and show results
                 val db = Room.databaseBuilder(
                     requireContext(),
@@ -128,12 +133,38 @@ class SacksFragment : Fragment() {
                         db.sacksDao().insertItemResponse(responseItem)
                     }
 
-                    val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+                    val uuid = sharedPref.getString("UUID", "")
+                    val sacksItems = db.sacksDao().getItemResponses()
 
-                    with(sharedPref.edit()){
-                        putBoolean("SACKS_ITEMS_READY", true)
-                        apply()
-                    }
+                    val sacksPayload = SacksPayload(
+                        uuid = uuid!!,
+                        sacksItems = sacksItems,
+                    )
+
+                    // Gson object
+                    val gson = Gson()
+                    val sacksPayloadJson = gson.toJson(sacksPayload)
+
+                    // Send to server
+                    val comm = ServerCommunication(
+                        getString(R.string.serverDomain),
+                        getString(R.string.sacksEndpoint),
+                        getString(R.string.sha56hash),
+                        sacksPayloadJson
+                    )
+
+                    comm.sendData(secure = false, callback = { success ->
+                        with(sharedPref.edit()) {
+                            putBoolean("SACKS_ITEMS_SENT", success)
+                            apply()
+                        }
+                    })
+                }
+
+                // Signal that the view has finished it's job
+                with(sharedPref.edit()){
+                    putBoolean("SACKS_ITEMS_READY", true)
+                    apply()
                 }
 
                 // Load SacksResultsFragment where info will be sent

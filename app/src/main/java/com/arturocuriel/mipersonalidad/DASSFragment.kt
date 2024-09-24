@@ -14,13 +14,16 @@ import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
+import com.arturocuriel.mipersonalidad.models.DASSPayload
 import com.arturocuriel.mipersonalidad.models.QuestionBFI
+import com.arturocuriel.mipersonalidad.models.ServerCommunication
 import com.arturocuriel.mipersonalidad.room.AppDatabase
 import com.arturocuriel.mipersonalidad.room.BFIScores
 import com.arturocuriel.mipersonalidad.room.BFItems
 import com.arturocuriel.mipersonalidad.room.DASSItems
 import com.arturocuriel.mipersonalidad.room.DASSScores
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.io.IOException
@@ -99,6 +102,7 @@ class DASSFragment : Fragment() {
             } else {
                 // Submit the test and show results
                 val scores = calculateScores()
+                val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
 
                 val db = Room.databaseBuilder(
                     requireContext(),
@@ -112,9 +116,10 @@ class DASSFragment : Fragment() {
                         stress = scores["Stress"]!!,
                         timestamp = System.currentTimeMillis()
                     )
+                    // Insert global scores
                     db.dassDao().insertScore(dassScores)
 
-                    // Clean previous scores
+                    // Clean previous individual scores
                     db.dassItemsDao().emptyItemResponses()
 
                     // Insert new individual scores
@@ -127,12 +132,40 @@ class DASSFragment : Fragment() {
                         db.dassItemsDao().insertItemResponse(responseItem)
                     }
 
-                    val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+                    val uuid = sharedPref.getString("UUID", "")
+                    val itemResponses = db.dassItemsDao().getItemResponses()
 
-                    with(sharedPref.edit()){
-                        putBoolean("DASS_ITEMS_READY", true)
-                        apply()
-                    }
+                    // Send
+                    val dassPayload = DASSPayload(
+                        uuid = uuid!!,
+                        dassItems = itemResponses,
+                        dassResults = dassScores
+                    )
+
+                    // Gson object
+                    val gson = Gson()
+                    val dassPayloadJson = gson.toJson(dassPayload)
+
+                    // Send to server
+                    val comm = ServerCommunication(
+                        getString(R.string.serverDomain),
+                        getString(R.string.dassEndpoint),
+                        getString(R.string.sha56hash),
+                        dassPayloadJson
+                    )
+
+                    comm.sendData(secure = false, callback = { success ->
+                        with(sharedPref.edit()) {
+                            putBoolean("DASS_ITEMS_SENT", success)
+                            apply()
+                        }
+                    })
+                }
+
+                // Signal that the view has finished it's job
+                with(sharedPref.edit()){
+                    putBoolean("DASS_ITEMS_READY", true)
+                    apply()
                 }
 
                 // Load ResultsFragment
