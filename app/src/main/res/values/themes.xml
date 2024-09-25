@@ -1,7 +1,7 @@
 <!-- res/values/themes.xml -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme -->
-    <style name="Theme.MiPersonalidad" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.MiPersonalidad" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here -->
         <item name="colorPrimary">@color/grayblue</item>
         <item name="colorPrimaryVariant">@color/darkBlue</item>

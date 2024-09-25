@@ -59,9 +59,6 @@ class ResearchProjectsFragment : Fragment() {
             findNavController().navigate(R.id.action_researchProjectsFragment_to_firstFragment)
         }
 
-        // Check if we need to send info
-        resendUserDataIfNecessary()
-
         // Configure project list
         val cardView1 = view.findViewById<CardView>(R.id.card1)
         val cardView2 = view.findViewById<CardView>(R.id.card2)
@@ -86,47 +83,6 @@ class ResearchProjectsFragment : Fragment() {
                 findNavController().navigate(R.id.action_researchProjectsFragment_to_dassResultsFragment)
             } else {
                 findNavController().navigate(R.id.action_researchProjectsFragment_to_dassFragment)
-            }
-        }
-    }
-
-    private fun resendUserDataIfNecessary() {
-        val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
-        val usedDataSent = sharedPref.getBoolean("USER_DATA_SENT", false)
-
-        if (!usedDataSent) {
-            lifecycleScope.launch {
-                // Prepare user and BFI data for sending to server
-                val db = AppDatabase.getDatabase(requireContext())
-
-                val userData = db.usersDao().getLastInsertedUser()
-                val bfiScores = db.bfiDao().getLastInsertedScore()
-                val bfiItems = db.bfiItemsDao().getItemResponses()
-
-                val uBFIPayload = UserBFIPayload(
-                    users = userData!!,
-                    bigFiveItems = bfiItems,
-                    bigFiveResults = bfiScores!!
-                )
-
-                // Gson object
-                val gson = Gson()
-                val uBFIPayloadJson = gson.toJson(uBFIPayload)
-
-                // Send to server
-                val comm = ServerCommunication(
-                    getString(R.string.serverDomain),
-                    getString(R.string.bfiEndpoint),
-                    getString(R.string.sha56hash),
-                    uBFIPayloadJson
-                )
-
-                comm.sendData(secure = false, callback = { success ->
-                    with(sharedPref.edit()) {
-                        putBoolean("USER_DATA_SENT", success)
-                        apply()
-                    }
-                })
             }
         }
     }

@@ -65,9 +65,6 @@ class DASSResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Check if we need to save info
-        sendDASSItemsIfNecessary()
-
         // Override back button
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             // Navigate to the research projects fragment
@@ -137,48 +134,6 @@ class DASSResultsFragment : Fragment() {
             in 10..12 -> getString(R.string.stress_medium)
             in 13..16 -> getString(R.string.stress_high)
             else -> getString(R.string.stress_extreme)
-        }
-    }
-
-    private fun sendDASSItemsIfNecessary() {
-        val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
-        val uuid = sharedPref.getString("UUID", "")
-        val dassItemsSent = sharedPref.getBoolean("DASS_ITEMS_SENT", false)
-        val dassItemsReady = sharedPref.getBoolean("DASS_ITEMS_READY", false)
-
-        if (!dassItemsSent and dassItemsReady) {
-            lifecycleScope.launch {
-                // Prepare DASS data for sending to server
-                val db = AppDatabase.getDatabase(requireContext())
-
-                val dassItems = db.dassItemsDao().getItemResponses()
-                val dassScores = db.dassDao().getLastInsertedScore()
-
-                val dassPayload = DASSPayload(
-                    uuid = uuid!!,
-                    dassItems = dassItems,
-                    dassResults = dassScores!!
-                )
-
-                // Gson object
-                val gson = Gson()
-                val dassPayloadJson = gson.toJson(dassPayload)
-
-                // Send to server
-                val comm = ServerCommunication(
-                    getString(R.string.serverDomain),
-                    getString(R.string.dassEndpoint),
-                    getString(R.string.sha56hash),
-                    dassPayloadJson
-                )
-
-                comm.sendData(secure = false, callback = { success ->
-                    with(sharedPref.edit()) {
-                        putBoolean("DASS_ITEMS_SENT", success)
-                        apply()
-                    }
-                })
-            }
         }
     }
 

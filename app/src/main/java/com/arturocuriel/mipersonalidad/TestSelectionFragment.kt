@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.addCallback
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
@@ -49,6 +50,10 @@ class TestSelectionFragment : Fragment() {
 
         // Clear navigation back stack
         findNavController().popBackStack(R.id.firstFragment, false)
+        // Override back button
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            // No cation on press back.
+        }
 
         val informationButton = view.findViewById<Button>(R.id.btnBFIInformation)
         val resultsButton = view.findViewById<Button>(R.id.btnBFITestResults)

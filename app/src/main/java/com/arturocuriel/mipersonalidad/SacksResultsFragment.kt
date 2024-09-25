@@ -77,9 +77,6 @@ class SacksResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Check if we need to save info
-        sendSacksItemsIfNecessary()
-
         // Override back button
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             // Navigate to the research projects fragment
@@ -175,46 +172,6 @@ class SacksResultsFragment : Fragment() {
                 document.close()
             }
             Toast.makeText(requireContext(), "Archivo guardado al folder de Descargas.", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun sendSacksItemsIfNecessary() {
-        val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
-        val uuid = sharedPref.getString("UUID", "")
-        val sacksItemsSent = sharedPref.getBoolean("SACKS_ITEMS_SENT", false)
-        val sacksItemsReady = sharedPref.getBoolean("SACKS_ITEMS_READY", false)
-
-        if (!sacksItemsSent and sacksItemsReady) {
-            lifecycleScope.launch {
-                // Prepare user and BFI data for sending to server
-                val db = AppDatabase.getDatabase(requireContext())
-
-                val sacksItems = db.sacksDao().getItemResponses()
-
-                val sacksPayload = SacksPayload(
-                    uuid = uuid!!,
-                    sacksItems = sacksItems,
-                )
-
-                // Gson object
-                val gson = Gson()
-                val sacksPayloadJson = gson.toJson(sacksPayload)
-
-                // Send to server
-                val comm = ServerCommunication(
-                    getString(R.string.serverDomain),
-                    getString(R.string.sacksEndpoint),
-                    getString(R.string.sha56hash),
-                    sacksPayloadJson
-                )
-
-                comm.sendData(secure = false, callback = { success ->
-                    with(sharedPref.edit()) {
-                        putBoolean("SACKS_ITEMS_SENT", success)
-                        apply()
-                    }
-                })
-            }
         }
     }
 
