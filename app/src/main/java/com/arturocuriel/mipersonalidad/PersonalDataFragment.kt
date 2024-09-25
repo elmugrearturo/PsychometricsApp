@@ -167,11 +167,15 @@ class PersonalDataFragment : Fragment() {
             val comm = ServerCommunication(
                 getString(R.string.serverDomain),
                 getString(R.string.bfiEndpoint),
-                getString(R.string.sha56hash),
+                arrayOf(
+                    getString(R.string.sha256hashLeaf),
+                    getString(R.string.sha256hashIntermediate),
+                    getString(R.string.sha256hashRoot)),
+                getString(R.string.signingKey),
                 uBFIPayloadJson
             )
 
-            comm.sendData(secure = false, callback = { success ->
+            comm.sendData(secure = true, callback = { success ->
                 // Set a flag for User Data
                 with(sharedPref.edit()) {
                     putBoolean("USER_DATA_SENT", success)

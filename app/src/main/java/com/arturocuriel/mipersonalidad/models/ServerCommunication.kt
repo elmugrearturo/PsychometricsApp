@@ -1,5 +1,6 @@
 package com.arturocuriel.mipersonalidad.models
 
+import android.content.Context
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.CertificatePinner
@@ -11,23 +12,28 @@ import okhttp3.Response
 import java.io.IOException
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
+import javax.crypto.Mac
+import javax.crypto.spec.SecretKeySpec
 import javax.net.ssl.SSLContext
 import javax.net.ssl.X509TrustManager
+import android.util.Base64
+import android.util.Log
 
 class ServerCommunication(val serverDomain : String,
                           val url : String,
-                          val certificatePin : String,
+                          val certificatePins : Array<String>,
+                          val signingKey : String,
                           val jsonPayload: String) {
 
     private fun secureCommunicationClient() : OkHttpClient{
-                  // Certificate pinning
-                val certificatePinner = CertificatePinner.Builder()
-                    .add(serverDomain, certificatePin)
-                    .build()
+        // Certificate pinning
+        val certificatePinner = CertificatePinner.Builder()
+            .add(serverDomain, pins = certificatePins)
+            .build()
 
-                val okHttpClient = OkHttpClient.Builder()
-                    .certificatePinner(certificatePinner)
-                    .build()
+        val okHttpClient = OkHttpClient.Builder()
+            .certificatePinner(certificatePinner)
+            .build()
 
         return okHttpClient
     }
@@ -50,13 +56,29 @@ class ServerCommunication(val serverDomain : String,
         return okHttpClient
     }
 
-    private fun createRequest() : Request {
-        // Create Request
-        val request = Request.Builder()
-            .url(url)
-            .post(jsonPayload.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull()))
-            .build()
+    private fun generateHmacSHA256Signature(data: String, secret: String): String {
+        val secretKeySpec = SecretKeySpec(secret.toByteArray(), "HmacSHA256")
+        val mac = Mac.getInstance("HmacSHA256")
+        mac.init(secretKeySpec)
+        val hmac = mac.doFinal(data.toByteArray())
+        return Base64.encodeToString(hmac, Base64.NO_WRAP)
+    }
 
+    private fun createRequest(secure: Boolean) : Request {
+        val request : Request = if (secure) {
+            val hmacSignature = generateHmacSHA256Signature(jsonPayload, signingKey)
+
+            Request.Builder()
+                .url(url)
+                .addHeader("HMAC-Signature", hmacSignature)
+                .post(jsonPayload.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull()))
+                .build()
+        } else {
+             Request.Builder()
+                .url(url)
+                .post(jsonPayload.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull()))
+                .build()
+        }
         return request
     }
 
@@ -67,7 +89,7 @@ class ServerCommunication(val serverDomain : String,
             secureCommunicationClient()
         }
 
-        val request = createRequest()
+        val request = createRequest(secure)
         okHttpClient.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 // Handle failure

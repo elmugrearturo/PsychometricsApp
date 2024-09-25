@@ -147,11 +147,15 @@ class DASSFragment : Fragment() {
                     val comm = ServerCommunication(
                         getString(R.string.serverDomain),
                         getString(R.string.dassEndpoint),
-                        getString(R.string.sha56hash),
+                        arrayOf(
+                            getString(R.string.sha256hashLeaf),
+                            getString(R.string.sha256hashIntermediate),
+                            getString(R.string.sha256hashRoot)),
+                        getString(R.string.signingKey),
                         dassPayloadJson
                     )
 
-                    comm.sendData(secure = false, callback = { success ->
+                    comm.sendData(secure = true, callback = { success ->
                         with(sharedPref.edit()) {
                             putBoolean("DASS_ITEMS_SENT", success)
                             apply()
