@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.activity.addCallback
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
@@ -60,11 +61,14 @@ class ResearchProjectsFragment : Fragment() {
         }
 
         // Configure project list
+        val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+
         val cardView1 = view.findViewById<CardView>(R.id.card1)
         val cardView2 = view.findViewById<CardView>(R.id.card2)
+        val retractionButton = view.findViewById<Button>(R.id.retractionButton)
 
         cardView1.setOnClickListener{
-            val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+
             val sacksItemsReady = sharedPref.getBoolean("SACKS_ITEMS_READY", false)
 
             if (sacksItemsReady) {
@@ -76,7 +80,7 @@ class ResearchProjectsFragment : Fragment() {
         }
 
         cardView2.setOnClickListener{
-            val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
+
             val dassItemsReady = sharedPref.getBoolean("DASS_ITEMS_READY", false)
 
             if (dassItemsReady) {
@@ -84,6 +88,48 @@ class ResearchProjectsFragment : Fragment() {
             } else {
                 findNavController().navigate(R.id.action_researchProjectsFragment_to_dassFragment)
             }
+        }
+
+        retractionButton.setOnClickListener {
+            AlertDialog.Builder(requireContext()).apply {
+                setTitle("Confirmar revocación de participación")
+                setMessage("¿Está segur@ que desea revocar su participación? No podrá volver a aceptar.")
+                setPositiveButton("Revocar"){ dialog, _ ->
+                    val uuid = sharedPref.getString("UUID", "")
+                    val payload = "{\"uuid\":\"$uuid\"}"
+
+                    lifecycleScope.launch {
+                        val comm = ServerCommunication(
+                            getString(R.string.serverDomain),
+                            getString(R.string.deleteEndpoint),
+                            getString(R.string.sha56hash),
+                            payload
+                        )
+
+                        comm.sendData(secure = false, callback = { success ->
+                            with(sharedPref.edit()){
+                                putBoolean("SERVER_DATA_DELETED", success)
+                                apply()
+                            }
+                        })
+                    }
+
+                    with(sharedPref.edit()){
+                        putBoolean("LICENSE_ACCEPTED", false)
+                        putBoolean("LICENSE_REVOKED", true)
+                        putString("UUID", "")
+                        apply()
+                    }
+                    dialog.dismiss()
+                    findNavController().navigate(R.id.action_researchProjectsFragment_to_firstFragment)
+                }
+                setNegativeButton("Seguir permitiendo"){ dialog, _ ->
+                    dialog.dismiss()
+                }
+                create()
+                show()
+            }
+
         }
     }
 

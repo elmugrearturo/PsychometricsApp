@@ -22,7 +22,7 @@
                 android:id="@+id/cardImg1"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:background="@color/red"
                 android:src="@drawable/research_512" />
 
@@ -30,7 +30,7 @@
                 android:id="@+id/cardText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/cardImg1"
+                android:layout_toEndOf="@id/cardImg1"
                 android:layout_centerVertical="true"
                 android:paddingHorizontal="16dp"
                 android:text="Análisis basado en texto libre"
@@ -51,18 +51,18 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/cardImg1"
+                android:id="@+id/cardImg2"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:background="@color/red"
                 android:src="@drawable/research_512" />
 
             <TextView
-                android:id="@+id/cardText1"
+                android:id="@+id/cardText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/cardImg1"
+                android:layout_toEndOf="@id/cardImg2"
                 android:layout_centerVertical="true"
                 android:paddingHorizontal="16dp"
                 android:text="Depressión, Ansiedad y Estrés"
@@ -70,5 +70,12 @@
                 />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/retractionButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Dejar de participar y borrar mis datos"/>
 
 </LinearLayout>

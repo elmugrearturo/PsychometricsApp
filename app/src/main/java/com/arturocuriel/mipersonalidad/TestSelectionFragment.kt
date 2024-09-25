@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.activity.addCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
@@ -98,12 +99,25 @@ class TestSelectionFragment : Fragment() {
         researchButton.setOnClickListener{
             val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
             val licenseAccepted = sharedPref.getBoolean("LICENSE_ACCEPTED", false)
+            val licenseRevoked = sharedPref.getBoolean("LICENSE_REVOKED", false)
             val hasRegisteredUserData = sharedPref.getBoolean("REGISTERED_USER_DATA", false)
 
             // Check if EULA has been accepted
             if (!licenseAccepted) {
-                findNavController().navigate(R.id.action_firstFragment_to_eulaFragment)
-            }else {
+                if (!licenseRevoked) {
+                    findNavController().navigate(R.id.action_firstFragment_to_eulaFragment)
+                } else {
+                    AlertDialog.Builder(requireContext()).apply {
+                        setTitle("Permiso revocado")
+                        setMessage("Usted ya revocó su participación.")
+                        setPositiveButton("Aceptar") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        create()
+                        show()
+                    }
+                }
+            } else {
                 // Check if User has already set their population variables
                 if (!hasRegisteredUserData){
                     findNavController().navigate(R.id.action_firstFragment_to_personalDataFragment)
