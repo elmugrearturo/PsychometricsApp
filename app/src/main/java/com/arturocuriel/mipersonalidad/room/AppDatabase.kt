@@ -1,8 +1,16 @@
 package com.arturocuriel.mipersonalidad.room
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
+
+//@Database(entities = [BFIScores::class], version = 1)
+//abstract class AppDatabase : RoomDatabase() {
+//    abstract fun bfiDao() : BFIDao
+//}
 
 @Database(entities = [
     BFIScores::class,
@@ -10,7 +18,10 @@ import androidx.room.RoomDatabase
     DASSScores::class,
     DASSItems::class,
     Users::class,
-    SacksItems::class], version = 2)
+    SacksItems::class], version = 2,
+    autoMigrations = [
+        AutoMigration(from = 1, to = 2)
+    ])
 abstract class AppDatabase : RoomDatabase() {
     abstract fun bfiDao() : BFIDao
     abstract fun bfiItemsDao() : BFIItemsDao
@@ -20,6 +31,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun sacksDao() : SacksDao
 
     companion object {
+
         @Volatile
         private var INSTANCE: AppDatabase? = null
 

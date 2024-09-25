@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "dass_scores")
-class DASSScores (
+data class DASSScores (
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val depression: Int,
     val anxiety: Int,
