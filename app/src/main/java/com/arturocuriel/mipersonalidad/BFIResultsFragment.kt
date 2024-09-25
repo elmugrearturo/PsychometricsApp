@@ -82,10 +82,7 @@ class BFIResultsFragment : Fragment() {
         val downloadChartButton = view.findViewById<MaterialButton>(R.id.downloadChartButton)
 
         // Initialize the Room database
-        val db = Room.databaseBuilder(
-            requireContext(),
-            AppDatabase::class.java, "app-database"
-        ).build()
+        val db = AppDatabase.getDatabase(requireContext())
 
         lifecycleScope.launch {
             val bfiScores = db.bfiDao().getLastInsertedScore()

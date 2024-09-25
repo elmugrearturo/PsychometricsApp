@@ -104,10 +104,7 @@ class DASSFragment : Fragment() {
                 val scores = calculateScores()
                 val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
 
-                val db = Room.databaseBuilder(
-                    requireContext(),
-                    AppDatabase::class.java, "app-database"
-                ).build()
+                val db = AppDatabase.getDatabase(requireContext())
 
                 lifecycleScope.launch{
                     val dassScores = DASSScores(

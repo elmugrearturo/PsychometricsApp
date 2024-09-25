@@ -144,10 +144,7 @@ class PersonalDataFragment : Fragment() {
 
         lifecycleScope.launch {
             // Prepare user and BFI data for sending to server
-            val db = Room.databaseBuilder(
-                requireContext(),
-                AppDatabase::class.java, "app-database"
-            ).build()
+            val db = AppDatabase.getDatabase(requireContext())
 
             // Insert User Data locally
             db.usersDao().insertUser(userData)

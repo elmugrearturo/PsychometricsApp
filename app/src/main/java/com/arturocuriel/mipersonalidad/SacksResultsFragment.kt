@@ -98,10 +98,7 @@ class SacksResultsFragment : Fragment() {
         val questionList = loadQuestionsFromAssets()
         lifecycleScope.launch {
             //Get data from database
-            val db = Room.databaseBuilder(
-                requireContext(),
-                AppDatabase::class.java, "app-database"
-            ).build()
+            val db = AppDatabase.getDatabase(requireContext())
 
             val sacksResponses = db.sacksDao().getItemResponses()
 
@@ -190,10 +187,7 @@ class SacksResultsFragment : Fragment() {
         if (!sacksItemsSent and sacksItemsReady) {
             lifecycleScope.launch {
                 // Prepare user and BFI data for sending to server
-                val db = Room.databaseBuilder(
-                    requireContext(),
-                    AppDatabase::class.java, "app-database"
-                ).build()
+                val db = AppDatabase.getDatabase(requireContext())
 
                 val sacksItems = db.sacksDao().getItemResponses()
 

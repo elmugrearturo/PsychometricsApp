@@ -99,10 +99,7 @@ class BFIFragment : Fragment() {
                 // Submit the test and show results
                 val scores = calculateScores()
 
-                val db = Room.databaseBuilder(
-                    requireContext(),
-                    AppDatabase::class.java, "app-database"
-                ).build()
+                val db = AppDatabase.getDatabase(requireContext())
 
                 lifecycleScope.launch{
                     val bfiScores = BFIScores(

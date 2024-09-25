@@ -97,10 +97,7 @@ class ResearchProjectsFragment : Fragment() {
         if (!usedDataSent) {
             lifecycleScope.launch {
                 // Prepare user and BFI data for sending to server
-                val db = Room.databaseBuilder(
-                    requireContext(),
-                    AppDatabase::class.java, "app-database"
-                ).build()
+                val db = AppDatabase.getDatabase(requireContext())
 
                 val userData = db.usersDao().getLastInsertedUser()
                 val bfiScores = db.bfiDao().getLastInsertedScore()

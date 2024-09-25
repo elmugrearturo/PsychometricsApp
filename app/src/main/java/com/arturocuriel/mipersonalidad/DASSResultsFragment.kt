@@ -78,10 +78,7 @@ class DASSResultsFragment : Fragment() {
         textExplanation = view.findViewById(R.id.dassResultsReport)
 
         // Initialize the Room database
-        val db = Room.databaseBuilder(
-            requireContext(),
-            AppDatabase::class.java, "app-database"
-        ).build()
+        val db = AppDatabase.getDatabase(requireContext())
 
         lifecycleScope.launch {
             val dassScores = db.dassDao().getLastInsertedScore()
@@ -152,10 +149,7 @@ class DASSResultsFragment : Fragment() {
         if (!dassItemsSent and dassItemsReady) {
             lifecycleScope.launch {
                 // Prepare DASS data for sending to server
-                val db = Room.databaseBuilder(
-                    requireContext(),
-                    AppDatabase::class.java, "app-database"
-                ).build()
+                val db = AppDatabase.getDatabase(requireContext())
 
                 val dassItems = db.dassItemsDao().getItemResponses()
                 val dassScores = db.dassDao().getLastInsertedScore()

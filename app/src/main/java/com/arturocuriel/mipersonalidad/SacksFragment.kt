@@ -114,10 +114,7 @@ class SacksFragment : Fragment() {
                 val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
 
                 // Submit the test and show results
-                val db = Room.databaseBuilder(
-                    requireContext(),
-                    AppDatabase::class.java, "app-database"
-                ).build()
+                val db = AppDatabase.getDatabase(requireContext())
 
                 lifecycleScope.launch{
                     // Clean previous scores

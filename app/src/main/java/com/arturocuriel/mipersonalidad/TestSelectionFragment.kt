@@ -54,10 +54,7 @@ class TestSelectionFragment : Fragment() {
         val resultsButton = view.findViewById<Button>(R.id.btnBFITestResults)
         val researchButton = view.findViewById<Button>(R.id.btnResearch)
 
-        val db = Room.databaseBuilder(
-            requireContext(),
-            AppDatabase::class.java, "app-database"
-        ).build()
+        val db = AppDatabase.getDatabase(requireContext())
 
         lifecycleScope.launch {
             val rowCount = db.bfiDao().getRowCount()
