@@ -23,8 +23,8 @@
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_alignParentStart="true"
-                android:background="@color/red"
-                android:src="@drawable/research_512" />
+                android:background="@color/blue"
+                android:src="@drawable/research_icon" />
 
             <TextView
                 android:id="@+id/cardText1"
@@ -55,8 +55,8 @@
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_alignParentStart="true"
-                android:background="@color/red"
-                android:src="@drawable/research_512" />
+                android:background="@color/blue"
+                android:src="@drawable/research_icon" />
 
             <TextView
                 android:id="@+id/cardText2"
@@ -76,6 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
         android:text="Dejar de participar y borrar mis datos"/>
 
 </LinearLayout>

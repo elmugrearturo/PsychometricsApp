@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="Information banner"
-                android:src="@drawable/bfi_16_9"
+                android:src="@drawable/fillingresearchbanner_16_9"
                 android:adjustViewBounds="true"/>
 
         </androidx.cardview.widget.CardView>
