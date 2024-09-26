@@ -1,6 +1,9 @@
 package com.arturocuriel.mipersonalidad.models
 
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.CertificatePinner
@@ -24,6 +27,35 @@ class ServerCommunication(val serverDomain : String,
                           val certificatePins : Array<String>,
                           val signingKey : String,
                           val jsonPayload: String) {
+
+    companion object {
+        fun isNetworkAvailable(context: Context): Boolean {
+            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val network = connectivityManager.activeNetwork ?: return false
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+            return when {
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                else -> false
+            }
+        }
+
+        fun isServerReachable(url: String, callback: (Boolean) -> Unit) {
+            val client = OkHttpClient()
+            val request = Request.Builder().url(url).head().build()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    callback(false)  // Server is not reachable
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    callback(response.isSuccessful)  // Server is reachable if the response is successful
+                }
+            })
+        }
+    }
 
     private fun secureCommunicationClient() : OkHttpClient{
         // Certificate pinning

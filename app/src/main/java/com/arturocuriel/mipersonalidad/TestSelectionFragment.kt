@@ -2,16 +2,20 @@ package com.arturocuriel.mipersonalidad
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
+import com.arturocuriel.mipersonalidad.models.ServerCommunication
 import com.arturocuriel.mipersonalidad.room.AppDatabase
 import kotlinx.coroutines.launch
 
@@ -105,7 +109,8 @@ class TestSelectionFragment : Fragment() {
             // Check if EULA has been accepted
             if (!licenseAccepted) {
                 if (!licenseRevoked) {
-                    findNavController().navigate(R.id.action_firstFragment_to_eulaFragment)
+                    Toast.makeText(requireContext(), "Revisando acceso al servidor...", Toast.LENGTH_SHORT).show()
+                    proceedIfServerAvailable(R.id.action_firstFragment_to_eulaFragment)
                 } else {
                     AlertDialog.Builder(requireContext()).apply {
                         setTitle("Permiso revocado")
@@ -120,11 +125,34 @@ class TestSelectionFragment : Fragment() {
             } else {
                 // Check if User has already set their population variables
                 if (!hasRegisteredUserData){
-                    findNavController().navigate(R.id.action_firstFragment_to_personalDataFragment)
+                    proceedIfServerAvailable(R.id.action_firstFragment_to_personalDataFragment)
                 }else{
-                    findNavController().navigate(R.id.action_firstFragment_to_researchProjectsFragment)
+                    proceedIfServerAvailable(R.id.action_firstFragment_to_researchProjectsFragment)
                 }
             }
+        }
+    }
+
+    fun proceedIfServerAvailable(navigation_action : Int) {
+        if (ServerCommunication.isNetworkAvailable(requireContext())) {
+            ServerCommunication.isServerReachable(getString(R.string.serverUrl)) { isReachable ->
+                Handler(Looper.getMainLooper()).post {
+                    if (isReachable) {
+                        // Navigate to the view
+                        findNavController().navigate(navigation_action)
+                    } else {
+                        // Show error message (e.g., Toast or Dialog)
+                        Toast.makeText(
+                            requireContext(),
+                            "El servidor no está disponible",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        } else {
+            // Handle no network connectivity
+            Toast.makeText(requireContext(), "No hay conexión de red", Toast.LENGTH_SHORT).show()
         }
     }
 
