@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:scrollbars="vertical"
     tools:context=".BFIFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
