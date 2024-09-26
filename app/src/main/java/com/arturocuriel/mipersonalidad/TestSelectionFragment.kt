@@ -101,6 +101,7 @@ class TestSelectionFragment : Fragment() {
         }
 
         researchButton.setOnClickListener{
+
             val sharedPref = requireActivity().getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
             val licenseAccepted = sharedPref.getBoolean("LICENSE_ACCEPTED", false)
             val licenseRevoked = sharedPref.getBoolean("LICENSE_REVOKED", false)
@@ -109,6 +110,8 @@ class TestSelectionFragment : Fragment() {
             // Check if EULA has been accepted
             if (!licenseAccepted) {
                 if (!licenseRevoked) {
+                    // Avoid double clicking
+                    researchButton.isEnabled = false
                     Toast.makeText(requireContext(), "Revisando acceso al servidor...", Toast.LENGTH_SHORT).show()
                     proceedIfServerAvailable(R.id.action_firstFragment_to_eulaFragment)
                 } else {
@@ -125,21 +128,25 @@ class TestSelectionFragment : Fragment() {
             } else {
                 // Check if User has already set their population variables
                 if (!hasRegisteredUserData){
+                    // Avoid double clicking
+                    researchButton.isEnabled = false
                     proceedIfServerAvailable(R.id.action_firstFragment_to_personalDataFragment)
                 }else{
+                    // Avoid double clicking
+                    researchButton.isEnabled = false
                     proceedIfServerAvailable(R.id.action_firstFragment_to_researchProjectsFragment)
                 }
             }
         }
     }
 
-    fun proceedIfServerAvailable(navigation_action : Int) {
+    private fun proceedIfServerAvailable(navigationAction : Int) {
         if (ServerCommunication.isNetworkAvailable(requireContext())) {
             ServerCommunication.isServerReachable(getString(R.string.serverUrl)) { isReachable ->
                 Handler(Looper.getMainLooper()).post {
                     if (isReachable) {
                         // Navigate to the view
-                        findNavController().navigate(navigation_action)
+                        findNavController().navigate(navigationAction)
                     } else {
                         // Show error message (e.g., Toast or Dialog)
                         Toast.makeText(

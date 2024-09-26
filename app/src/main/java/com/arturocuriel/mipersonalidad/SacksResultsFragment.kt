@@ -85,6 +85,10 @@ class SacksResultsFragment : Fragment() {
 
         val pdfButton : Button = view.findViewById<Button>(R.id.sacksDownloadAnswersButton)
 
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+            pdfButton.isEnabled = false
+        }
+
         pdfButton.setOnClickListener {
             getAnswersOnPDF()
         }
@@ -92,6 +96,11 @@ class SacksResultsFragment : Fragment() {
     }
 
     private fun getAnswersOnPDF() {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+            Toast.makeText(requireContext(), "Lo siento, no puedo generar PDF en esta versión de Android...", Toast.LENGTH_SHORT).show()
+           return
+        }
+
         val questionList = loadQuestionsFromAssets()
         lifecycleScope.launch {
             //Get data from database
