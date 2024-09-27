@@ -21,7 +21,7 @@
     <color name="extraversion">#ffcc00</color>
     <color name="agreeableness">#fe2a7f</color>
     <color name="neuroticism">#629cf3</color>
-    <color name="disabledTextColor">#9E9E9E</color>
+    <color name="disabledTextColor">#FF434343</color>
     <color name="enabledTextColor">#FFFFFF</color>
     <color name="chartTextColor">#FFFFFFFF</color>
     <color name="chartBackgroundColor">#FF000000</color>
